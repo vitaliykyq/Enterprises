@@ -1,0 +1,212 @@
+table {
+    min-width: 1100px;
+    border: 2px #898b95 solid;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+}
+
+th {
+    color: #76777d;
+    box-shadow: 5px 5px 20px #babecc;
+    border-radius: 320px;
+    background: #cacaca;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.updateForm form {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(4, auto) 40px;
+    row-gap: 14px;
+    column-gap: 20px;
+}
+
+.updateForm form button {
+    margin-left: auto;
+    margin-right: auto;
+    grid-column: 1 / span 2;
+}
+
+.updateText {
+    font-size: 1.7em;
+    text-align: center;
+}
+
+body, html {
+    background-color: #ebecf0;
+    text-align: center;
+}
+
+body, p, input, select, textarea, button {
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: -0.2px;
+    font-size: 16px;
+}
+
+div, p {
+    color: #898b95;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+form {
+    padding: 16px;
+    width: 320px;
+    margin: 0 auto;
+}
+
+.segment {
+    padding: 32px 0;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+button, input, select {
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 320px;
+    padding: 16px;
+    background-color: #ebecf0;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+form label {
+    display: block;
+    margin-top: 12px;
+    width: 100%;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+input, select {
+    margin-right: 8px;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+}
+input:focus {
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+select:focus {
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+button {
+    color: #61677c;
+    font-size: 0.9em;
+    box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 10px 0 10px 0;
+}
+
+button:hover {
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+button:active {
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+.updateBtn {
+    width: 100%;
+    height: 50px;
+    color: #0cae00;
+}
+
+.delBtn {
+    width: 100px;
+    height: 40px;
+    color: #ae1100;
+}
+
+.uppBtn {
+    width: 100px;
+    height: 40px;
+    color: #0cae00;
+}
+
+.addBtn {
+    width: 300px;
+    height: 50px;
+    color: #0077ae;
+}
+
+.newBtn {
+    width: 100%;
+    height: 50px;
+    color: #0cae00;
+}
+
+.backBtn {
+    padding: 0;
+    width: 500px;
+    height: 40px;
+    color: #ae1100;
+}
+
+.btnDrop {
+    width: 30px;
+    height: 30px;
+}
+
+.dropItem {
+    display: none;
+    width: auto;
+    height: auto;
+    background-color: #ebecf0;
+    padding: 30px;
+    transition: 0.3s;
+    border-radius: 25px;
+    border: 1px solid gray;
+    box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+}
+
+.dropItem p:nth-child(2n - 1) {
+    font-weight: bold;
+    padding-right: 30px;
+}
+
+/*.btnDrop:checked + .dropItem {
+    position: absolute;
+    grid-template-columns: auto auto;
+    transition: 0.3s ;
+}*/
+
+.btnDropItem {
+    grid-column: 1 / span 2;
+}
+
+.uppMenu {
+    display: none;
+}
+
+.checkBox:checked + .uppMenu {
+    left: 1000px;
+    position: absolute;
+    display: grid;
+}
+
+.dropDownMenu {
+    min-width: auto;
+    position: absolute;
+    width: 100px;
+    background-color: #ebecf0;
+}
+
+.btnDropMenu {
+    width: 60px;
+    height: 40px;
+    color: #0cae00;
+}

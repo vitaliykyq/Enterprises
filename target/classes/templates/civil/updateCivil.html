@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Civil</title>
+    <link  th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="segment">
+        <h1>UPDATE CIVIL</h1>
+    </div>
+    <div class="updateForm" style="margin-bottom: 150px">
+        <form action="#" th:action="@{/ui/civil/update}" th:object="${civils}"
+              method="POST">
+            <label for="num1">Id</label>
+            <input id="num1" type="number" readonly th:field="*{id}"/>
+            <label for="num2">IsBusiness</label>
+            <select id="num2" th:field="*{isBusiness}">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+            <label for="num3">Seats</label>
+            <input id="num3" type="number" th:field="*{seats}">
+            <label for="num4">IsBaggage</label>
+            <select id="num4" th:field="*{isBaggage}">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+            <button type="submit" class="updateBtn" style="transition: 0.5s; padding: 0; font-size: 0.8em">DONE</button>
+        </form>
+    </div>
+    <hr>
+
+    <a th:href="@{/ui/civil/get/all}">
+        <button class="backBtn" style="padding: 0">Back</button>
+    </a>
+</body>
+</html>

@@ -1,0 +1,44 @@
+package edu.coursework.enterprises.model;
+
+/*
+    @author:    Bogdan
+    @project:    Enterprises 
+    @class:    Person 
+    @version:    1.0.0 
+    @since:    15.04.2021     
+*/
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class Person {
+
+    private String id;
+
+    private String firstName;
+    private String secondName;
+    private int age;
+    private String telephone;
+    private String address;
+
+    private LocalDateTime created_at;
+    private LocalDateTime modified_at;
+    private String description;
+
+    public Person(String id, String firstName, String secondName, int age, String telephone, String address) {
+        this.id = id;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.age = age;
+        this.telephone = telephone;
+        this.address = address;
+        this.created_at = LocalDateTime.now();
+    }
+}

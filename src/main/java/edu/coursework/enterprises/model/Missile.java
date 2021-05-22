@@ -11,16 +11,17 @@ package edu.coursework.enterprises.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "missile")
 public class Missile {
-
+    @Id
     private String id;
 
     private String name;
@@ -31,8 +32,8 @@ public class Missile {
     private String missileStuffing;
     private int chargePower;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
     public Missile(String id, String name, String model,
@@ -45,6 +46,6 @@ public class Missile {
         this.classOfMissile = classOfMissile;
         this.missileStuffing = missileStuffing;
         this.chargePower = chargePower;
-        this.created_at = LocalDateTime.now();
+        this.created_at = new Date();
     }
 }

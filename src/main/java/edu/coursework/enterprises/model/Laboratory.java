@@ -11,29 +11,31 @@ package edu.coursework.enterprises.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "laboratory")
 public class Laboratory {
-
+    @Id
     private String id;
 
     private String address;
-    private List<Testing> tests;
+    private List<Testing> testingList;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
-    public Laboratory(String id, String address, List<Testing> tests) {
+    public Laboratory(String id, String address, List<Testing> testingList) {
         this.id = id;
         this.address = address;
-        this.tests = tests;
-        this.created_at = LocalDateTime.now();
+        this.testingList = testingList;
+        this.created_at = new Date();
     }
 }

@@ -11,35 +11,36 @@ package edu.coursework.enterprises.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "testing")
 public class Testing {
-
+    @Id
     private String id;
 
-    private List<Product> products;
-    private LocalDate date;
-    private List<Engineer> testers;
-    private List<Equipment> equipment;
+    private List<Product> productList;
+    private String date;
+    private List<Engineer> testerList;
+    private List<Equipment> equipmentList;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
-    public Testing(String id, List<Product> products, LocalDate date,
-                   List<Engineer> testers, List<Equipment> equipment) {
+    public Testing(String id, List<Product> productList, String date,
+                   List<Engineer> testerList, List<Equipment> equipmentList) {
         this.id = id;
-        this.products = products;
+        this.productList = productList;
         this.date = date;
-        this.testers = testers;
-        this.equipment = equipment;
-        this.created_at = LocalDateTime.now();
+        this.testerList = testerList;
+        this.equipmentList = equipmentList;
+        this.created_at = new Date();
     }
 }

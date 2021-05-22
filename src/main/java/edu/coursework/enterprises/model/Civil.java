@@ -11,24 +11,30 @@ package edu.coursework.enterprises.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "civil")
 public class Civil {
-
+    @Id
     private String id;
 
     private Boolean isBusiness;
     private int seats;
     private Boolean isBaggage;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    @CreatedDate
+    private Date created_at;
+    @LastModifiedDate
+    private Date modified_at;
     private String description;
 
     public Civil(String id, Boolean isBusiness, int seats, Boolean isBaggage) {
@@ -36,12 +42,7 @@ public class Civil {
         this.isBusiness = isBusiness;
         this.seats = seats;
         this.isBaggage = isBaggage;
-        created_at = LocalDateTime.now();
-    }
-
-    public String myBool(boolean isBool){
-
-        return isBool ? "true" : "false";
+        this.created_at = new Date();
     }
 
     public Boolean getBusiness() {

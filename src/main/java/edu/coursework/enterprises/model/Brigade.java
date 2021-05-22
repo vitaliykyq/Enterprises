@@ -11,29 +11,31 @@ package edu.coursework.enterprises.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "brigade")
 public class Brigade {
-
+    @Id
     private String id;
 
     private Worker brigadier;
-    private List<Worker> workers;
+    private List<Worker> workerList;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
-    public Brigade(String id, Worker brigadier, List<Worker> workers) {
+    public Brigade(String id, Worker brigadier, List<Worker> workerList) {
         this.id = id;
         this.brigadier = brigadier;
-        this.workers = workers;
-        this.created_at = LocalDateTime.now();
+        this.workerList = workerList;
+        this.created_at = new Date();
     }
 }

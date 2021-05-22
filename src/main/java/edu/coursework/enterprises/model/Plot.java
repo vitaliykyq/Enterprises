@@ -11,34 +11,36 @@ package edu.coursework.enterprises.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "plot")
 public class Plot {
-
+    @Id
     private String id;
 
-    private List<Produce> produces;
+    private List<Produce> produceList;
     private Engineer head;
-    private List<Brigade> brigades;
-    private List<Engineer> engineers;
+    private List<Brigade> brigadeList;
+    private List<Engineer> engineerList;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
-    public Plot(String id, List<Produce> produces, Engineer head,
-                List<Brigade> brigades, List<Engineer> engineers) {
+    public Plot(String id, List<Produce> produceList, Engineer head,
+                List<Brigade> brigadeList, List<Engineer> engineerList) {
         this.id = id;
-        this.produces = produces;
+        this.produceList = produceList;
         this.head = head;
-        this.brigades = brigades;
-        this.engineers = engineers;
-        this.created_at = LocalDateTime.now();
+        this.brigadeList = brigadeList;
+        this.engineerList = engineerList;
+        this.created_at = new Date();
     }
 }

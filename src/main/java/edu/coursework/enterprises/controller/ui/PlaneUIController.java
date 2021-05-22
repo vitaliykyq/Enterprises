@@ -32,8 +32,8 @@ public class PlaneUIController {
     @RequestMapping("/get/all")
     public String showAll(Model model){
 
-        List<Plane> planes = planeService.getAll();
-        model.addAttribute("planes", planes);
+        List<Plane> planeList = planeService.getAll();
+        model.addAttribute("planeList", planeList);
 
         return "plane/planeList";
     }
@@ -41,10 +41,10 @@ public class PlaneUIController {
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Plane plane = planeService.getById(id);
-        model.addAttribute("planes", plane);
+        model.addAttribute("plane", plane);
 
-        List<Civil> civilsId = civilService.getAll();
-        model.addAttribute("civilsIds", civilsId);
+        List<Civil> civilListId = civilService.getAll();
+        model.addAttribute("civilListId", civilListId);
         return "plane/updatePlane";
     }
 
@@ -52,7 +52,6 @@ public class PlaneUIController {
     public String update(Model model,
                          @ModelAttribute("employee") @RequestBody Plane plane) {
 
-        plane.setCivil(civilService.getAll().get(Integer.parseInt(plane.getCivil().getId()) - 1));
         planeService.update(plane);
         return "redirect:/ui/plane/get/all";
     }
@@ -60,10 +59,10 @@ public class PlaneUIController {
     @GetMapping("/showNewForm")
     public String showNewForm(Model model) {
         Plane plane = new Plane();
-        model.addAttribute("planes", plane);
+        model.addAttribute("plane", plane);
 
-        List<Civil> civilsId = civilService.getAll();
-        model.addAttribute("civilsIds", civilsId);
+        List<Civil> civilListId = civilService.getAll();
+        model.addAttribute("civilListId", civilListId);
         return "plane/newPlane";
     }
 
@@ -72,7 +71,8 @@ public class PlaneUIController {
 
         String name = plane.getName();
         String planeModel = plane.getModel();
-        plane.setCivil(civilService.getAll().get(Integer.parseInt(plane.getCivil().getId()) - 1));
+        Object type = plane.getType();
+        /*plane.setCivil(civilService.getAll().get(Integer.parseInt(plane.getCivil().getId()) - 1));*/
         int issue = plane.getIssue();
         int aircrew = plane.getAircrew();
         int payload = plane.getPayload();
@@ -83,10 +83,10 @@ public class PlaneUIController {
         /*List<Plane> planes = planeService.getAll();*/
 
         if (name != null && name.length() > 0 && planeModel != null && planeModel.length() > 0
-                /*&& planeCivil != null*/
+                && type != null
                 && issue > 0 && aircrew > 0 && payload > 0
                 && height > 0 && length > 0 && wingspan > 0 && ceiling > 0) {
-            model.addAttribute("planes", planeService.create(plane));
+            model.addAttribute("plane", planeService.create(plane));
             return "redirect:/ui/plane/get/all";
         }
         return "redirect:/ui/plane/showNewForm";

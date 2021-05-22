@@ -27,8 +27,8 @@ public class CivilUIController {
     @RequestMapping("/get/all")
     public String showAll(Model model){
 
-        List<Civil> civils = service.getAll();
-        model.addAttribute("civils", civils);
+        List<Civil> civilList = service.getAll();
+        model.addAttribute("civilList", civilList);
 
         return "civil/civilList";
     }
@@ -36,14 +36,14 @@ public class CivilUIController {
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Civil civil = service.getById(id);
-        model.addAttribute("civils",civil);
+        model.addAttribute("civil", civil);
         return "civil/updateCivil";
     }
 
     @GetMapping("/showNewForm")
     public String showNewForm(Model model) {
         Civil civil = new Civil();
-        model.addAttribute("civils", civil);
+        model.addAttribute("civil", civil);
         return "civil/newCivil";
     }
 
@@ -52,10 +52,9 @@ public class CivilUIController {
         Boolean business = civil.getBusiness();
         int seats = civil.getSeats();
         Boolean baggage = civil.getBaggage();
-        List<Civil> civils = service.getAll();
 
         if (business != null && baggage != null && seats > 0) {
-            model.addAttribute("civils", service.create(civil));
+            model.addAttribute("civil", service.create(civil));
             return "redirect:/ui/civil/get/all";
         }
         return "redirect:/ui/civil/showNewForm";
@@ -63,6 +62,7 @@ public class CivilUIController {
 
     @PostMapping("/update")
     public String update(Model model, @ModelAttribute("employee") @RequestBody Civil civil) {
+
 
         service.update(civil);
         return "redirect:/ui/civil/get/all";

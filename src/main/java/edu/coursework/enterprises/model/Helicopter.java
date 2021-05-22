@@ -11,15 +11,17 @@ package edu.coursework.enterprises.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "helicopter")
 public class Helicopter {
-
+    @Id
     private String id;
 
     private String name;
@@ -33,8 +35,8 @@ public class Helicopter {
     private String engineType;
     private String rating;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
     public Helicopter(String id, String name, String model, Object type, int issue,
@@ -50,6 +52,6 @@ public class Helicopter {
         this.ceiling = ceiling;
         this.engineType = engineType;
         this.rating = rating;
-        this.created_at = LocalDateTime.now();
+        this.created_at = new Date();
     }
 }

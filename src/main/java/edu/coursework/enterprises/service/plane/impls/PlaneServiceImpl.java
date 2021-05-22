@@ -8,51 +8,48 @@ package edu.coursework.enterprises.service.plane.impls;
     @since:    15.04.2021     
 */
 
-import edu.coursework.enterprises.dao.plane.impls.PlaneDAOImpl;
-import edu.coursework.enterprises.data.FakeData;
 import edu.coursework.enterprises.model.Plane;
+import edu.coursework.enterprises.repository.PlaneRepository;
 import edu.coursework.enterprises.service.plane.interfaces.IPlaneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class PlaneServiceImpl implements IPlaneService {
 
     @Autowired
-    FakeData fakeData;
-
-    @Autowired
-    PlaneDAOImpl dao;
+    PlaneRepository repository;
 
     @Override
     public Plane getById(String id) {
-        return dao.getById(id);
+
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Plane create(Plane plane) {
-        return dao.create(plane);
+        plane.setCreated_at(new Date());
+        return repository.save(plane);
     }
 
     @Override
     public Plane update(Plane plane) {
-        return dao.update(plane);
+        plane.setModified_at(new Date());
+        return repository.save(plane);
     }
 
     @Override
     public Plane delete(String id) {
-        return dao.delete(id);
-    }
-
-    @Override
-    public Plane save(Plane plane) {
+        repository.deleteById(id);
         return null;
     }
 
     @Override
     public List<Plane> getAll() {
-        return fakeData.getPlaneList();
+
+        return repository.findAll();
     }
 }

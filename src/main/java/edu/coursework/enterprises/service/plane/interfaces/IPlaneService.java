@@ -18,6 +18,5 @@ public interface IPlaneService {
     Plane create(Plane plane);
     Plane update(Plane plane);
     Plane delete(String id);
-    Plane save(Plane plane);
     List<Plane> getAll();
 }

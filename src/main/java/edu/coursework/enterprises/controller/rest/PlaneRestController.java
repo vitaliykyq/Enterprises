@@ -26,7 +26,7 @@ public class PlaneRestController {
     PlaneServiceImpl service;
 
     @GetMapping("/get/all")
-    public List<Plane> getPlane(){
+    public List<Plane> getAll(){
         return service.getAll() ;
     }
 

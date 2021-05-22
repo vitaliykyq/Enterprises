@@ -11,15 +11,17 @@ package edu.coursework.enterprises.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "glider")
 public class Glider {
-
+    @Id
     private String id;
 
     private String name;
@@ -31,8 +33,8 @@ public class Glider {
     private double ceiling;
     private String engineType;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
     public Glider(String id, String name, String model, int issue,
@@ -46,6 +48,6 @@ public class Glider {
         this.length = length;
         this.ceiling = ceiling;
         this.engineType = engineType;
-        this.created_at = LocalDateTime.now();
+        this.created_at = new Date();
     }
 }

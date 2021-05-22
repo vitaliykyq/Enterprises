@@ -10,7 +10,7 @@
     <h1>ADD CIVIL</h1>
 </div>
 <div class="updateForm" style="margin-bottom: 150px">
-    <form action="#" th:action="@{/ui/civil/add}" th:object="${civils}"
+    <form action="#" th:action="@{/ui/civil/add}" th:object="${civil}"
           method="POST">
         <label for="num2">IsBusiness</label>
         <select id="num2" th:field="*{isBusiness}"  required>

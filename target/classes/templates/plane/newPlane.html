@@ -10,7 +10,7 @@
         <h1>ADD CIVIL</h1>
     </div>
     <div class="updateForm" style="margin-bottom: 150px">
-        <form action="#" th:action="@{/ui/plane/add}" th:object="${planes}"
+        <form action="#" th:action="@{/ui/plane/add}" th:object="${plane}"
               method="POST">
             <label for="num1">Name</label>
             <input id="num1" th:field="*{name}"  required>
@@ -20,8 +20,8 @@
             <div id="num3">
                 <label for="id">Id</label>
                 <select id="id" style="transition: 0.5s" th:field="*{civil.id}">
-                    <option th:each="civilsId: ${civilsIds}"
-                            th:value="${civilsId.id}" th:text="${civilsId.id}">
+                    <option th:each="civilListId: ${civilListId}"
+                            th:value="${civilListId.id}" th:text="${civilListId.id}">
                     </option>
                 </select>
                 <!--<input id="num3" th:field="*{civil.id}"  required>-->

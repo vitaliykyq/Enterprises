@@ -11,20 +11,22 @@ package edu.coursework.enterprises.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "plane")
 public class Plane {
-
+    @Id
     private String id;
 
     private String name;
     private String model;
-    private Civil civil;
+    private Object type;
     private int issue;
     private int aircrew;
     private int payload;
@@ -33,16 +35,16 @@ public class Plane {
     private double wingspan;
     private double ceiling;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
-    public Plane(String id, String name, String model, Civil civil, int issue,
+    public Plane(String id, String name, String model, Object type, int issue,
                  int aircrew, int payload, double height, double length, double wingspan, double ceiling) {
         this.id = id;
         this.name = name;
         this.model = model;
-        this.civil = civil;
+        this.type = type;
         this.issue = issue;
         this.aircrew = aircrew;
         this.payload = payload;
@@ -50,6 +52,6 @@ public class Plane {
         this.length = length;
         this.wingspan = wingspan;
         this.ceiling = ceiling;
-        this.created_at = LocalDateTime.now();
+        this.created_at = new Date();
     }
 }

@@ -10,10 +10,10 @@
         <h1>UPDATE CIVIL</h1>
     </div>
     <div class="updateForm" style="margin-bottom: 150px">
-        <form action="#" th:action="@{/ui/civil/update}" th:object="${civils}"
+        <form action="#" th:action="@{/ui/civil/update}" th:object="${civil}"
               method="POST">
             <label for="num1">Id</label>
-            <input id="num1" type="number" readonly th:field="*{id}"/>
+            <input id="num1" readonly th:field="*{id}"/>
             <label for="num2">IsBusiness</label>
             <select id="num2" th:field="*{isBusiness}">
                 <option value="true">True</option>

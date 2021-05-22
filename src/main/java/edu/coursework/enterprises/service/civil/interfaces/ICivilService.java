@@ -18,6 +18,5 @@ public interface ICivilService {
     Civil create(Civil civil);
     Civil update(Civil civil);
     Civil delete(String id);
-    Civil save(Civil civil);
     List<Civil> getAll();
 }

@@ -31,17 +31,7 @@ public class Military {
     private int speed;
     private String type;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Military(String id, int ammunition, String armor, List<Missile> missileList, int speed, String type) {
-        this.id = id;
-        this.ammunition = ammunition;
-        this.armor = armor;
-        this.missileList = missileList;
-        this.speed = speed;
-        this.type = type;
-        this.created_at = new Date();
-    }
 }

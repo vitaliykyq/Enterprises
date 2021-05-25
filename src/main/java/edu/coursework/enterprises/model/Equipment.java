@@ -28,15 +28,7 @@ public class Equipment {
     private double price;
     private double weight;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Equipment(String id, String name, double price, double weight) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.weight = weight;
-        this.created_at = new Date();
-    }
 }

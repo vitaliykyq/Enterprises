@@ -35,23 +35,7 @@ public class Plane {
     private double wingspan;
     private double ceiling;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Plane(String id, String name, String model, Object type, int issue,
-                 int aircrew, int payload, double height, double length, double wingspan, double ceiling) {
-        this.id = id;
-        this.name = name;
-        this.model = model;
-        this.type = type;
-        this.issue = issue;
-        this.aircrew = aircrew;
-        this.payload = payload;
-        this.height = height;
-        this.length = length;
-        this.wingspan = wingspan;
-        this.ceiling = ceiling;
-        this.created_at = new Date();
-    }
 }

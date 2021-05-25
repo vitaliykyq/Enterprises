@@ -30,17 +30,7 @@ public class Plot {
     private List<Brigade> brigadeList;
     private List<Engineer> engineerList;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Plot(String id, List<Produce> produceList, Engineer head,
-                List<Brigade> brigadeList, List<Engineer> engineerList) {
-        this.id = id;
-        this.produceList = produceList;
-        this.head = head;
-        this.brigadeList = brigadeList;
-        this.engineerList = engineerList;
-        this.created_at = new Date();
-    }
 }

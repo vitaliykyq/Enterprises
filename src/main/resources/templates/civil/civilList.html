@@ -25,8 +25,8 @@
                 <td th:text="${civil.isBusiness}"></td>
                 <td th:text="${civil.seats}"></td>
                 <td th:text="${civil.isBaggage}"></td>
-                <td th:text="${civil.created_at}"></td>
-                <td th:text="${civil.modified_at}"></td>
+                <td th:text="${civil.createdAt}"></td>
+                <td th:text="${civil.modifiedAt}"></td>
                 <td>
                     <a th:href="@{/ui/civil/delete/{id}(id=${civil.id})}">
                         <button class="btn delBtn" style="transition: 0.5s; padding: 0">Delete</button>

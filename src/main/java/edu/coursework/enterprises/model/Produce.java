@@ -29,16 +29,7 @@ public class Produce {
     private String date;
     private String status;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Produce(String id, Product product, int amount, String date, String status) {
-        this.id = id;
-        this.product = product;
-        this.amount = amount;
-        this.date = date;
-        this.status = status;
-        this.created_at = new Date();
-    }
 }

@@ -31,14 +31,18 @@ public class PlaneServiceImpl implements IPlaneService {
 
     @Override
     public Plane create(Plane plane) {
-        plane.setCreated_at(new Date());
+        plane.setCreatedAt(new Date());
         return repository.save(plane);
     }
 
     @Override
     public Plane update(Plane plane) {
-        plane.setModified_at(new Date());
-        return repository.save(plane);
+        plane.setModifiedAt(new Date());
+        plane.setCreatedAt(repository.findById(plane.getId())
+                .orElse(null)
+                .getCreatedAt());
+        repository.save(plane);
+        return plane;
     }
 
     @Override

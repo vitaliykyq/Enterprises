@@ -15,7 +15,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 
@@ -31,19 +30,9 @@ public class Civil {
     private int seats;
     private Boolean isBaggage;
 
-    @CreatedDate
-    private Date created_at;
-    @LastModifiedDate
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Civil(String id, Boolean isBusiness, int seats, Boolean isBaggage) {
-        this.id = id;
-        this.isBusiness = isBusiness;
-        this.seats = seats;
-        this.isBaggage = isBaggage;
-        this.created_at = new Date();
-    }
 
     public Boolean getBusiness() {
         return isBusiness;

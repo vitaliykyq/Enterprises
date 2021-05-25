@@ -27,14 +27,7 @@ public class Accounting {
     private Product product;
     private Laboratory laboratory;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Accounting(String id, Product product, Laboratory laboratory) {
-        this.id = id;
-        this.product = product;
-        this.laboratory = laboratory;
-        this.created_at = new Date();
-    }
 }

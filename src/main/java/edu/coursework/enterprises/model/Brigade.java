@@ -28,14 +28,7 @@ public class Brigade {
     private Worker brigadier;
     private List<Worker> workerList;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Brigade(String id, Worker brigadier, List<Worker> workerList) {
-        this.id = id;
-        this.brigadier = brigadier;
-        this.workerList = workerList;
-        this.created_at = new Date();
-    }
 }

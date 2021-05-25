@@ -28,14 +28,7 @@ public class Engineer {
     private List<Person> personList;
     private int experience;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Engineer(String id, List<Person> personList, int experience) {
-        this.id = id;
-        this.personList = personList;
-        this.experience = experience;
-        this.created_at = new Date();
-    }
 }

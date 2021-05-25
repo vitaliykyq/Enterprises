@@ -30,17 +30,7 @@ public class Testing {
     private List<Engineer> testerList;
     private List<Equipment> equipmentList;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Testing(String id, List<Product> productList, String date,
-                   List<Engineer> testerList, List<Equipment> equipmentList) {
-        this.id = id;
-        this.productList = productList;
-        this.date = date;
-        this.testerList = testerList;
-        this.equipmentList = equipmentList;
-        this.created_at = new Date();
-    }
 }

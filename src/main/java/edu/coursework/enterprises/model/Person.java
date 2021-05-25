@@ -30,17 +30,7 @@ public class Person {
     private String telephone;
     private String address;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Person(String id, String firstName, String secondName, int age, String telephone, String address) {
-        this.id = id;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.age = age;
-        this.telephone = telephone;
-        this.address = address;
-        this.created_at = new Date();
-    }
 }

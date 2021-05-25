@@ -29,14 +29,7 @@ public class Product {
     private Object type;
     private List<String> operation;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Product(String id, Object type, List<String> operation) {
-        this.id = id;
-        this.type = type;
-        this.operation = operation;
-        this.created_at = new Date();
-    }
 }

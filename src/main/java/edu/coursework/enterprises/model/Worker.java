@@ -27,14 +27,7 @@ public class Worker {
     private Person person;
     private int experience;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Worker(String id, Person person, int experience) {
-        this.id = id;
-        this.person = person;
-        this.experience = experience;
-        this.created_at = new Date();
-    }
 }

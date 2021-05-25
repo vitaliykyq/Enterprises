@@ -33,21 +33,7 @@ public class Glider {
     private double ceiling;
     private String engineType;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Glider(String id, String name, String model, int issue,
-                  int aircrew, double height, double length, double ceiling, String engineType) {
-        this.id = id;
-        this.name = name;
-        this.model = model;
-        this.issue = issue;
-        this.aircrew = aircrew;
-        this.height = height;
-        this.length = length;
-        this.ceiling = ceiling;
-        this.engineType = engineType;
-        this.created_at = new Date();
-    }
 }

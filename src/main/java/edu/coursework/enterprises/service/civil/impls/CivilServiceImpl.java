@@ -31,14 +31,18 @@ public class CivilServiceImpl implements ICivilService {
 
     @Override
     public Civil create(Civil civil) {
-        civil.setCreated_at(new Date());
+        civil.setCreatedAt(new Date());
         return repository.save(civil);
     }
 
     @Override
     public Civil update(Civil civil) {
-        civil.setModified_at(new Date());
-        return repository.save(civil);
+        civil.setModifiedAt(new Date());
+        civil.setCreatedAt(repository.findById(civil.getId())
+                .orElse(null)
+                .getCreatedAt());
+        repository.save(civil);
+        return civil;
     }
 
     @Override

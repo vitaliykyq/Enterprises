@@ -48,7 +48,7 @@ public class CivilUIController {
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Civil civil) {
+    public String add(Model model, @ModelAttribute("civil") @RequestBody Civil civil) {
         Boolean business = civil.getBusiness();
         int seats = civil.getSeats();
         Boolean baggage = civil.getBaggage();
@@ -61,8 +61,7 @@ public class CivilUIController {
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Civil civil) {
-
+    public String update(Model model, @ModelAttribute("civil") @RequestBody Civil civil) {
 
         service.update(civil);
         return "redirect:/ui/civil/get/all";

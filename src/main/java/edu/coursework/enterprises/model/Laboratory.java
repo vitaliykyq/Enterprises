@@ -28,14 +28,7 @@ public class Laboratory {
     private String address;
     private List<Testing> testingList;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Laboratory(String id, String address, List<Testing> testingList) {
-        this.id = id;
-        this.address = address;
-        this.testingList = testingList;
-        this.created_at = new Date();
-    }
 }

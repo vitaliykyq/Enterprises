@@ -30,16 +30,7 @@ public class Shop {
     private List<Laboratory> laboratoryList;
     private double area;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Shop(String id, List<Plot> plotList, Engineer head, List<Laboratory> laboratoryList, double area) {
-        this.id = id;
-        this.plotList = plotList;
-        this.head = head;
-        this.laboratoryList = laboratoryList;
-        this.area = area;
-        this.created_at = new Date();
-    }
 }

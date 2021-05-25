@@ -32,20 +32,7 @@ public class Missile {
     private String missileStuffing;
     private int chargePower;
 
-    private Date created_at;
-    private Date modified_at;
+    private Date createdAt;
+    private Date modifiedAt;
     private String description;
-
-    public Missile(String id, String name, String model,
-                   String type, int issue, String classOfMissile, String missileStuffing, int chargePower) {
-        this.id = id;
-        this.name = name;
-        this.model = model;
-        this.type = type;
-        this.issue = issue;
-        this.classOfMissile = classOfMissile;
-        this.missileStuffing = missileStuffing;
-        this.chargePower = chargePower;
-        this.created_at = new Date();
-    }
 }

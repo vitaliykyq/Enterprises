@@ -9,9 +9,13 @@ package edu.coursework.enterprises.controller.ui;
 */
 
 import edu.coursework.enterprises.model.Civil;
+import edu.coursework.enterprises.model.Military;
 import edu.coursework.enterprises.model.Plane;
+import edu.coursework.enterprises.model.Transport;
 import edu.coursework.enterprises.service.civil.impls.CivilServiceImpl;
+import edu.coursework.enterprises.service.military.impls.MilitaryServiceImpl;
 import edu.coursework.enterprises.service.plane.impls.PlaneServiceImpl;
+import edu.coursework.enterprises.service.transport.impls.TransportServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +33,12 @@ public class PlaneUIController {
     @Autowired
     CivilServiceImpl civilService;
 
+    @Autowired
+    MilitaryServiceImpl militaryService;
+
+    @Autowired
+    TransportServiceImpl transportService;
+
     @RequestMapping("/get/all")
     public String showAll(Model model){
 
@@ -45,6 +55,12 @@ public class PlaneUIController {
 
         List<Civil> civilListId = civilService.getAll();
         model.addAttribute("civilListId", civilListId);
+
+        List<Military> militaryListId = militaryService.getAll();
+        model.addAttribute("militaryListId", militaryListId);
+
+        List<Transport> transportListId = transportService.getAll();
+        model.addAttribute("transportListId", transportListId);
         return "plane/updatePlane";
     }
 
@@ -63,33 +79,23 @@ public class PlaneUIController {
 
         List<Civil> civilListId = civilService.getAll();
         model.addAttribute("civilListId", civilListId);
+
+        List<Military> militaryListId = militaryService.getAll();
+        model.addAttribute("militaryListId", militaryListId);
+
+        List<Transport> transportListId = transportService.getAll();
+        model.addAttribute("transportListId", transportListId);
         return "plane/newPlane";
     }
 
     @PostMapping("/add")
     public String add(Model model, @ModelAttribute("employee") @RequestBody Plane plane) {
+        plane.setCivil(civilService.getById(plane.getCivil().getId()));
+        plane.setMilitary(militaryService.getById(plane.getMilitary().getId()));
+        plane.setTransport(transportService.getById(plane.getTransport().getId()));
 
-        String name = plane.getName();
-        String planeModel = plane.getModel();
-        Object type = plane.getType();
-        /*plane.setCivil(civilService.getAll().get(Integer.parseInt(plane.getCivil().getId()) - 1));*/
-        int issue = plane.getIssue();
-        int aircrew = plane.getAircrew();
-        int payload = plane.getPayload();
-        double height = plane.getHeight();
-        double length = plane.getLength();
-        double wingspan = plane.getWingspan();
-        double ceiling = plane.getCeiling();
-        /*List<Plane> planes = planeService.getAll();*/
-
-        if (name != null && name.length() > 0 && planeModel != null && planeModel.length() > 0
-                && type != null
-                && issue > 0 && aircrew > 0 && payload > 0
-                && height > 0 && length > 0 && wingspan > 0 && ceiling > 0) {
-            model.addAttribute("plane", planeService.create(plane));
-            return "redirect:/ui/plane/get/all";
-        }
-        return "redirect:/ui/plane/showNewForm";
+        model.addAttribute("plane", planeService.create(plane));
+        return "redirect:/ui/plane/get/all";
     }
 
     @RequestMapping("/delete/{id}")

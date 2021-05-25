@@ -49,15 +49,8 @@ public class CivilUIController {
 
     @PostMapping("/add")
     public String add(Model model, @ModelAttribute("civil") @RequestBody Civil civil) {
-        Boolean business = civil.getBusiness();
-        int seats = civil.getSeats();
-        Boolean baggage = civil.getBaggage();
-
-        if (business != null && baggage != null && seats > 0) {
-            model.addAttribute("civil", service.create(civil));
-            return "redirect:/ui/civil/get/all";
-        }
-        return "redirect:/ui/civil/showNewForm";
+        model.addAttribute("civil", service.create(civil));
+        return "redirect:/ui/civil/get/all";
     }
 
     @PostMapping("/update")

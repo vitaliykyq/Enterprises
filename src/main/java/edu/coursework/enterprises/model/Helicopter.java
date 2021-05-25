@@ -26,7 +26,9 @@ public class Helicopter {
 
     private String name;
     private String model;
-    private Object type;
+    private Civil civil;
+    private Military military;
+    private Transport transport;
     private int issue;
     private int aircrew;
     private double height;

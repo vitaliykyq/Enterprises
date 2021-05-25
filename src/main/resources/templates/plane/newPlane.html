@@ -18,8 +18,9 @@
             <input id="num2" th:field="*{model}"  required>
             <label for="num3">Civil</label>
             <div id="num3">
-                <label for="id">Id</label>
-                <select id="id" style="transition: 0.5s" th:field="*{civil.id}">
+                <label for="id1">Id</label>
+                <select id="id1" style="transition: 0.5s" th:field="*{civil.id}">
+                    <option th:value="${null}">Null</option>
                     <option th:each="civilListId: ${civilListId}"
                             th:value="${civilListId.id}" th:text="${civilListId.id}">
                     </option>
@@ -29,26 +30,46 @@
                     <button type="submit" class="newBtn" style="transition: 0.5s; padding: 0; font-size: 0.8em">NEW</button>
                 </a>-->
             </div>
-            <label for="num4">Issue</label>
-            <input id="num4" type="number" th:field="*{issue}" min="0" required>
-            <label for="num5">Aircrew</label>
-            <input id="num5" type="number" th:field="*{aircrew}" min="0" required>
-            <label for="num6">Payload</label>
-            <input id="num6" type="number" th:field="*{payload}" min="0" required>
-            <label for="num7">Height</label>
-            <input id="num7" type="number" th:field="*{height}" placeholder="0.00"
+            <label for="num4">Military</label>
+            <div id="num4">
+                <label for="id2">Id</label>
+                <select id="id2" style="transition: 0.5s" th:field="*{military.id}">
+                    <option th:value="${null}">Null</option>
+                    <option th:each="militaryListId: ${militaryListId}"
+                            th:value="${militaryListId.id}" th:text="${militaryListId.id}">
+                    </option>
+                </select>
+            </div>
+            <label for="num5">Transport</label>
+            <div id="num5">
+                <label for="id3">Id</label>
+                <select id="id3" style="transition: 0.5s" th:field="*{transport.id}">
+                    <option th:value="${null}">Null</option>
+                    <option th:each="transportListId: ${transportListId}"
+                            th:value="${transportListId.id}" th:text="${transportListId.id}">
+                    </option>
+                </select>
+            </div>
+            <label for="num6">Issue</label>
+            <input id="num6" type="number" th:field="*{issue}" min="0" required>
+            <label for="num7">Aircrew</label>
+            <input id="num7" type="number" th:field="*{aircrew}" min="0" required>
+            <label for="num8">Payload</label>
+            <input id="num8" type="number" th:field="*{payload}" min="0" required>
+            <label for="num9">Height</label>
+            <input id="num9" type="number" th:field="*{height}" placeholder="0.00"
                    name="price" min="0" value="0" step="0.01" title="Currency"
                    pattern="^\d+(?:\.\d{1,2})?$" required>
-            <label for="num8">Length</label>
-            <input id="num8" type="number" th:field="*{length}" placeholder="0.00"
+            <label for="num10">Length</label>
+            <input id="num10" type="number" th:field="*{length}" placeholder="0.00"
                    name="price" min="0" value="0" step="0.01" title="Currency"
                    pattern="^\d+(?:\.\d{1,2})?$" required>
-            <label for="num9">Wingspan</label>
-            <input id="num9" type="number" th:field="*{wingspan}" placeholder="0.00"
+            <label for="num11">Wingspan</label>
+            <input id="num11" type="number" th:field="*{wingspan}" placeholder="0.00"
                    name="price" min="0" value="0" step="0.01" title="Currency"
                    pattern="^\d+(?:\.\d{1,2})?$" required>
-            <label for="num10">Ceiling</label>
-            <input id="num10" type="number" th:field="*{ceiling}" placeholder="0.00"
+            <label for="num12">Ceiling</label>
+            <input id="num12" type="number" th:field="*{ceiling}" placeholder="0.00"
                    name="price" min="0" value="0" step="0.01" title="Currency"
                    pattern="^\d+(?:\.\d{1,2})?$" required>
             <button type="submit" class="newBtn" style="transition: 0.5s; padding: 0; font-size: 0.8em">SAVE</button>

@@ -26,7 +26,11 @@ public class Product {
     @Id
     private String id;
 
-    private Object type;
+    private Plane plane;
+    private Glider glider;
+    private HangGlider hangGlider;
+    private Helicopter helicopter;
+    private Missile missile;
     private List<String> operation;
 
     private Date createdAt;

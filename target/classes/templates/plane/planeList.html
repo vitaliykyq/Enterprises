@@ -13,7 +13,9 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Model</th>
-                    <th>Type</th>
+                    <th>Civil</th>
+                    <th>Military</th>
+                    <th>Transport</th>
                     <th>Issue</th>
                     <th>Aircrew</th>
                     <th>Payload</th>
@@ -32,9 +34,9 @@
                 <td th:text="${plane.name}"></td>
                 <td th:text="${plane.model}"></td>
                 <td>
-                    <button class="btn btnDrop" th:text="${plane.civil.id}" th:data-id="${plane.civil.id}"
+                    <button class="btn btnDrop" th:text="${plane.civil.id}" th:data-id="${plane.civil.id + plane.id}"
                             th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
-                        <div class="dropItem" th:data-id-drop="${plane.civil.id}" style="transition: 0.5s">
+                        <div class="dropItem" th:data-id-drop="${plane.civil.id + plane.id}" style="transition: 0.5s">
                             <p>IsBusiness</p>
                             <p th:text="${plane.civil.isBusiness}"></p>
                             <p>Seats</p>
@@ -42,13 +44,57 @@
                             <p>IsBaggage</p>
                             <p th:text="${plane.civil.isBaggage}"></p>
                             <p>CreatedAt</p>
-                            <p th:text="${plane.civil.created_at}"></p>
+                            <p th:text="${plane.civil.createdAt}"></p>
                             <p>ModifiedAt</p>
-                            <p th:text="${plane.civil.modified_at}"></p>
-                            <a class="btnDropItem" th:href="@{/ui/civil/get/all}">
+                            <p th:text="${plane.civil.modifiedAt}"></p>
+                            <a class="btnDropItem" th:href="@{/ui/type/get/all}">
                                 <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
                             </a>
                         </div>
+                </td>
+                <td>
+                    <button class="btn btnDrop" th:text="${plane.military.id}" th:data-id="${plane.military.id + plane.id}"
+                            th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
+                    <div class="dropItem" th:data-id-drop="${plane.military.id + plane.id}" style="transition: 0.5s">
+                        <p>Ammunition</p>
+                        <p th:text="${plane.military.ammunition}"></p>
+                        <p>Armor</p>
+                        <p th:text="${plane.military.armor}"></p>
+                        <p>MissileList</p>
+                        <p th:text="${plane.military.missileList}"></p>
+                        <p>Speed</p>
+                        <p th:text="${plane.military.speed}"></p>
+                        <p>Type</p>
+                        <p th:text="${plane.military.type}"></p>
+                        <p>CreatedAt</p>
+                        <p th:text="${plane.military.createdAt}"></p>
+                        <p>ModifiedAt</p>
+                        <p th:text="${plane.military.modifiedAt}"></p>
+                        <a class="btnDropItem" th:href="@{/ui/type/get/all}">
+                            <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btnDrop" th:text="${plane.transport.id}" th:data-id="${plane.transport.id + plane.id}"
+                            th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
+                    <div class="dropItem" th:data-id-drop="${plane.transport.id + plane.id}" style="transition: 0.5s">
+                        <p>Cargo</p>
+                        <p th:text="${plane.transport.cargo}"></p>
+                        <p>Equipped</p>
+                        <p th:text="${plane.transport.equipped}"></p>
+                        <p>IsGuard</p>
+                        <p th:text="${plane.transport.isGuard}"></p>
+                        <p>IsHatch</p>
+                        <p th:text="${plane.transport.isHatch}"></p>
+                        <p>CreatedAt</p>
+                        <p th:text="${plane.transport.createdAt}"></p>
+                        <p>ModifiedAt</p>
+                        <p th:text="${plane.transport.modifiedAt}"></p>
+                        <a class="btnDropItem" th:href="@{/ui/type/get/all}">
+                            <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
+                        </a>
+                    </div>
                 </td>
                 <td th:text="${plane.issue}"></td>
                 <td th:text="${plane.aircrew}"></td>
@@ -57,8 +103,8 @@
                 <td th:text="${plane.length}"></td>
                 <td th:text="${plane.wingspan}"></td>
                 <td th:text="${plane.ceiling}"></td>
-                <td th:text="${plane.created_at}"></td>
-                <td th:text="${plane.modified_at}"></td>
+                <td th:text="${plane.createdAt}"></td>
+                <td th:text="${plane.modifiedAt}"></td>
                 <td>
                     <a th:href="@{/ui/plane/delete/{id}(id=${plane.id})}">
                         <button class="btn delBtn" style="transition: 0.5s; padding: 0">Delete</button>

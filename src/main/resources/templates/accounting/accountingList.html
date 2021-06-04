@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accounting List</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div style="position: absolute; left: 50%; transform: translate(-50%, 0)">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Product</th>
+                    <th>Laboratory</th>
+                    <th>CreatedAt</th>
+                    <th>ModifiedAt</th>
+                    <th class="options" colspan="2">OPTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="accounting: ${accountingList}">
+                <td th:text="${accounting.id}"></td>
+                <td th:text="${accounting.product}"></td>
+                <td th:text="${accounting.laboratory}"></td>
+                <td th:text="${accounting.createdAt}"></td>
+                <td th:text="${accounting.modifiedAt}"></td>
+                <td>
+                    <a th:href="@{/ui/accounting/delete/{id}(id=${accounting.id})}">
+                        <button class="btn delBtn" style="transition: 0.5s; padding: 0">Delete</button>
+                    </a>
+                    <a th:href="@{/ui/accounting/showUpdateForm/{id}(id=${accounting.id})}">
+                        <button class="btn uppBtn" style="transition: 0.5s; padding: 0">Update</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a th:href = "@{/ui/accounting/showNewForm}">
+            <button class="btn addBtn" style="transition: 0.5s; padding: 0">Add</button>
+        </a>
+    </div>
+</body>
+</html>

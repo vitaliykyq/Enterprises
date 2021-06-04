@@ -8,12 +8,11 @@ package edu.coursework.enterprises.model;
     @since:    15.04.2021     
 */
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -33,20 +32,4 @@ public class Civil {
     private Date createdAt;
     private Date modifiedAt;
     private String description;
-
-    public Boolean getBusiness() {
-        return isBusiness;
-    }
-
-    public void setBusiness(Boolean business) {
-        isBusiness = business;
-    }
-
-    public Boolean getBaggage() {
-        return isBaggage;
-    }
-
-    public void setBaggage(Boolean baggage) {
-        isBaggage = baggage;
-    }
 }

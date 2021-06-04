@@ -10,6 +10,8 @@ package edu.coursework.enterprises.repository;
 
 import edu.coursework.enterprises.model.Equipment;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface EquipmentRepository extends MongoRepository<Equipment, String> {
 }

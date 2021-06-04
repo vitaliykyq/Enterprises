@@ -26,6 +26,7 @@ public class Product {
     @Id
     private String id;
 
+    private String kind;
     private Plane plane;
     private Glider glider;
     private HangGlider hangGlider;

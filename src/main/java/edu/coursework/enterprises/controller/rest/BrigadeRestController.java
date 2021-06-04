@@ -51,4 +51,8 @@ public class BrigadeRestController {
         return service.update(brigade);
     }
 
+    /*@GetMapping("/get/workers")
+    public Object getEngineers(@PathVariable("plot") int plot){
+        return service.get(plot) ;
+    }*/
 }

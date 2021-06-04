@@ -51,4 +51,8 @@ public class TestingRestController {
         return service.update(testing);
     }
 
+    @GetMapping("/get/products")
+    public Object getProductsWithTesting(@PathVariable("testing") String testing){
+        return service.getProductsWithTesting(testing);
+    }
 }

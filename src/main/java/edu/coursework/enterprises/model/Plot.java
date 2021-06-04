@@ -25,6 +25,7 @@ public class Plot {
     @Id
     private String id;
 
+    private int number;
     private List<Produce> produceList;
     private Engineer head;
     private List<Brigade> brigadeList;

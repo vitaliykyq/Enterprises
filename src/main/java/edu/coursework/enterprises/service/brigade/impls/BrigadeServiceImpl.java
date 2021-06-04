@@ -12,15 +12,20 @@ import edu.coursework.enterprises.model.Brigade;
 import edu.coursework.enterprises.model.Civil;
 import edu.coursework.enterprises.repository.BrigadeRepository;
 import edu.coursework.enterprises.service.brigade.interfaces.IBrigadeService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class BrigadeServiceImpl implements IBrigadeService {
-
+    private final MongoTemplate mongoTemplate;
     @Autowired
     BrigadeRepository repository;
 
@@ -57,4 +62,5 @@ public class BrigadeServiceImpl implements IBrigadeService {
 
         return repository.findAll();
     }
+
 }

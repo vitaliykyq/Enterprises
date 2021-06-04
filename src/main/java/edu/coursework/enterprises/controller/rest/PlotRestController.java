@@ -51,4 +51,9 @@ public class PlotRestController {
         return service.update(plot);
     }
 
+    @GetMapping("/get/productFromPlot")
+    public Object getProductFromPlot(@PathVariable("plot") int plot){
+        return service.getProductFromPlot(plot) ;
+    }
+
 }

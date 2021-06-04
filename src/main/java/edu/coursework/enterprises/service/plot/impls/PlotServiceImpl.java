@@ -11,17 +11,24 @@ package edu.coursework.enterprises.service.plot.impls;
 import edu.coursework.enterprises.model.Plot;
 import edu.coursework.enterprises.repository.PlotRepository;
 import edu.coursework.enterprises.service.plot.interfaces.IPlotService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PlotServiceImpl implements IPlotService {
 
     @Autowired
     PlotRepository repository;
+
+    private final MongoTemplate mongoTemplate;
 
     @Override
     public Plot getById(String id) {
@@ -55,5 +62,12 @@ public class PlotServiceImpl implements IPlotService {
     public List<Plot> getAll() {
 
         return repository.findAll();
+    }
+    public Object getProductFromPlot(int number) {
+        Aggregation aggregation = Aggregation.newAggregation(
+                Aggregation.match(Criteria.where("number").is(number)),
+                Aggregation.project("produceList"));
+
+        return mongoTemplate.aggregate(aggregation, "plot", Object.class).getMappedResults();
     }
 }

@@ -11,17 +11,23 @@ package edu.coursework.enterprises.service.testing.impls;
 import edu.coursework.enterprises.model.Testing;
 import edu.coursework.enterprises.repository.TestingRepository;
 import edu.coursework.enterprises.service.testing.interfaces.ITestingService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TestingServiceImpl implements ITestingService {
 
     @Autowired
     TestingRepository repository;
+    private final MongoTemplate mongoTemplate;
 
     @Override
     public Testing getById(String id) {
@@ -56,4 +62,6 @@ public class TestingServiceImpl implements ITestingService {
 
         return repository.findAll();
     }
+
+
 }

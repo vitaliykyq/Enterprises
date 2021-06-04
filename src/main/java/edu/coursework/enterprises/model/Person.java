@@ -26,7 +26,7 @@ public class Person {
 
     private String firstName;
     private String secondName;
-    private int age;
+    private int year;
     private String telephone;
     private String address;
 

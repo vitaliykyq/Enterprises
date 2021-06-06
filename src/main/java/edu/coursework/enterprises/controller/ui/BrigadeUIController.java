@@ -3,13 +3,14 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    BrigadeUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
 
-import edu.coursework.enterprises.model.Brigade;
+import edu.coursework.enterprises.model.*;
 import edu.coursework.enterprises.service.brigade.impls.BrigadeServiceImpl;
+import edu.coursework.enterprises.service.plot.impls.PlotServiceImpl;
 import edu.coursework.enterprises.service.worker.impls.WorkerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,7 +41,10 @@ public class BrigadeUIController {
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Brigade brigade = brigadeService.getById(id);
-        model.addAttribute("brigade",brigade);
+        model.addAttribute("brigade", brigade);
+
+        List<Worker> workerListId = workerService.getAll();
+        model.addAttribute("workerListId", workerListId);
         return "brigade/updateBrigade";
     }
 
@@ -48,19 +52,20 @@ public class BrigadeUIController {
     public String showNewForm(Model model) {
         Brigade brigade = new Brigade();
         model.addAttribute("brigade", brigade);
+
+        List<Worker> workerListId = workerService.getAll();
+        model.addAttribute("workerListId", workerListId);
         return "brigade/newBrigade";
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Brigade brigade) {
-        brigade.setBrigadier(workerService.getById(brigade.getBrigadier().getId()));
-        /*brigade.setWorkerList(workerService.getById(brigade.getWorkerList().g()));*/
+    public String add(Model model, @ModelAttribute("brigade") @RequestBody Brigade brigade) {
         model.addAttribute("brigade", brigadeService.create(brigade));
         return "redirect:/ui/brigade/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Brigade brigade) {
+    public String update(Model model, @ModelAttribute("brigade") @RequestBody Brigade brigade) {
 
         brigadeService.update(brigade);
         return "redirect:/ui/brigade/get/all";

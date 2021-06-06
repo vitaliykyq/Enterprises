@@ -2,36 +2,34 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Update Civil</title>
+    <title>Update Person</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
     <div class="segment">
-        <h1>UPDATE CIVIL</h1>
+        <h1>UPDATE PERSON</h1>
     </div>
     <div class="updateForm" style="margin-bottom: 150px">
-        <form action="#" th:action="@{/ui/civil/update}" th:object="${civil}"
+        <form action="#" th:action="@{/ui/person/update}" th:object="${person}"
               method="POST">
             <label for="num1">Id</label>
             <input id="num1" readonly th:field="*{id}"/>
-            <label for="num2">IsBusiness</label>
-            <select id="num2" th:field="*{isBusiness}">
-                <option value="true">True</option>
-                <option value="false">False</option>
-            </select>
-            <label for="num3">Seats</label>
-            <input id="num3" type="number" th:field="*{seats}">
-            <label for="num4">IsBaggage</label>
-            <select id="num4" th:field="*{isBaggage}">
-                <option value="true">True</option>
-                <option value="false">False</option>
-            </select>
+            <label for="num2">FirstName</label>
+            <input id="num2" th:field="*{firstName}"  required>
+            <label for="num3">SecondName</label>
+            <input id="num3" th:field="*{secondName}"  required>
+            <label for="num4">Year</label>
+            <input id="num4" type="number" th:field="*{year}"  required>
+            <label for="num5">Telephone</label>
+            <input id="num5" th:field="*{telephone}"  required>
+            <label for="num6">Address</label>
+            <input id="num6" th:field="*{address}"  required>
             <button type="submit" class="updateBtn" style="transition: 0.5s; padding: 0; font-size: 0.8em">DONE</button>
         </form>
     </div>
     <hr>
 
-    <a th:href="@{/ui/civil/get/all}">
+    <a th:href="@{/ui/person/get/all}">
         <button class="backBtn" style="padding: 0">Back</button>
     </a>
 </body>

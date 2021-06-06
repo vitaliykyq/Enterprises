@@ -2,7 +2,7 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Civil List</title>
+    <title>Brigade List</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
@@ -11,36 +11,96 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>IsBusiness</th>
-                    <th>Seats</th>
-                    <th>IsBaggage</th>
+                    <th>Brigadier</th>
+                    <th>WorkerList</th>
                     <th>CreatedAt</th>
                     <th>ModifiedAt</th>
                     <th class="options" colspan="2">OPTIONS</th>
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="civil: ${civilList}">
-                <td th:text="${civil.id}"></td>
-                <td th:text="${civil.isBusiness}"></td>
-                <td th:text="${civil.seats}"></td>
-                <td th:text="${civil.isBaggage}"></td>
-                <td th:text="${civil.createdAt}"></td>
-                <td th:text="${civil.modifiedAt}"></td>
+            <tr th:each="brigade: ${brigadeList}">
+                <td th:text="${brigade.id}"></td>
                 <td>
-                    <a th:href="@{/ui/civil/delete/{id}(id=${civil.id})}">
+                    <button class="btn btnDrop" th:text="${brigade.brigadier.person.firstName}"
+                            th:data-id="${brigade.brigadier.id + brigade.id}"
+                            th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
+                    <div class="dropItem" th:data-id-drop="${brigade.brigadier.id + brigade.id}" style="transition: 0.5s">
+                        <p>Brigadier</p>
+                        <p th:text="${brigade.brigadier.person.firstName}"></p>
+                        <p>Experience</p>
+                        <p th:text="${brigade.brigadier.experience}"></p>
+                        <p>CreatedAt</p>
+                        <p th:text="${brigade.brigadier.createdAt}"></p>
+                        <p>ModifiedAt</p>
+                        <p th:text="${brigade.brigadier.modifiedAt}"></p>
+                        <a class="btnDropItem" th:href="@{/ui/type/get/all}">
+                            <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <ol>
+                        <li th:each="workerListIds: ${brigade.workerList}">
+                            <button class="btn btnDrop" th:text="${workerListIds.person.firstName}"
+                                    th:data-id="${workerListIds.id + brigade.id}"
+                                    th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
+                            <div class="dropItem" th:data-id-drop="${workerListIds.id + brigade.id}" style="transition: 0.5s">
+                                <p>FirstName</p>
+                                <p th:text="${workerListIds.person.firstName}"></p>
+                                <p>Experience</p>
+                                <p th:text="${workerListIds.experience}"></p>
+                                <p>CreatedAt</p>
+                                <p th:text="${workerListIds.createdAt}"></p>
+                                <p>ModifiedAt</p>
+                                <p th:text="${workerListIds.modifiedAt}"></p>
+                                <a class="btnDropItem" th:href="@{/ui/type/get/all}">
+                                    <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
+                                </a>
+                            </div>
+                        </li>
+                    </ol>
+                </td>
+                <td th:text="${brigade.createdAt}"></td>
+                <td th:text="${brigade.modifiedAt}"></td>
+                <td>
+                    <a th:href="@{/ui/brigade/delete/{id}(id=${brigade.id})}">
                         <button class="btn delBtn" style="transition: 0.5s; padding: 0">Delete</button>
                     </a>
-                    <a th:href="@{/ui/civil/showUpdateForm/{id}(id=${civil.id})}">
+                    <a th:href="@{/ui/brigade/showUpdateForm/{id}(id=${brigade.id})}">
                         <button class="btn uppBtn" style="transition: 0.5s; padding: 0">Update</button>
                     </a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a th:href = "@{/ui/civil/showNewForm}">
+        <a th:href = "@{/ui/brigade/showNewForm}">
             <button class="btn addBtn" style="transition: 0.5s; padding: 0">Add</button>
         </a>
     </div>
+    <script th:inline="javascript">
+        let listElem = document.querySelectorAll(".dropItem");
+        function kl(obj) {
+            listElem.forEach(elem => { elem.style.display = "none";});
+
+            if(obj.getAttribute("data-status") === "on") {
+                document.querySelectorAll(".btnDrop").
+                forEach(elem => { elem.setAttribute("data-status", "off"); })
+                return;
+            }
+
+            listElem.forEach(elem => {
+                if(elem.getAttribute("data-id-drop") === obj.getAttribute("data-id")) {
+                    elem.style.display = "grid";
+                    elem.style.position = "absolute";
+                    elem.style.gridTemplateColumns = "auto auto";
+                    obj.setAttribute("data-status", "on");
+                }else{
+                    document.querySelectorAll(".btnDrop").
+                    forEach(elem => { if(elem != obj) elem.setAttribute("data-status", "off"); })
+                }
+            })
+        }
+    </script>
 </body>
 </html>

@@ -8,9 +8,11 @@ package edu.coursework.enterprises.controller.ui;
     @since:    26.04.2021     
 */
 
-import edu.coursework.enterprises.model.Plot;
+import edu.coursework.enterprises.model.*;
+import edu.coursework.enterprises.service.brigade.impls.BrigadeServiceImpl;
 import edu.coursework.enterprises.service.engineer.impls.EngineerServiceImpl;
 import edu.coursework.enterprises.service.plot.impls.PlotServiceImpl;
+import edu.coursework.enterprises.service.produce.impls.ProduceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +28,13 @@ public class PlotUIController {
     PlotServiceImpl plotService;
 
     @Autowired
+    ProduceServiceImpl produceService;
+
+    @Autowired
     EngineerServiceImpl engineerService;
+
+    @Autowired
+    BrigadeServiceImpl brigadeService;
 
     @RequestMapping("/get/all")
     public String showAll(Model model){
@@ -41,6 +49,15 @@ public class PlotUIController {
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Plot plot = plotService.getById(id);
         model.addAttribute("plot",plot);
+
+        List<Produce> produceListId = produceService.getAll();
+        model.addAttribute("produceListId", produceListId);
+
+        List<Engineer> engineerListId = engineerService.getAll();
+        model.addAttribute("engineerListId", engineerListId);
+
+        List<Brigade> brigadeListId = brigadeService.getAll();
+        model.addAttribute("brigadeListId", brigadeListId);
         return "plot/updatePlot";
     }
 
@@ -48,18 +65,26 @@ public class PlotUIController {
     public String showNewForm(Model model) {
         Plot plot = new Plot();
         model.addAttribute("plot", plot);
+
+        List<Produce> produceListId = produceService.getAll();
+        model.addAttribute("produceListId", produceListId);
+
+        List<Engineer> engineerListId = engineerService.getAll();
+        model.addAttribute("engineerListId", engineerListId);
+
+        List<Brigade> brigadeListId = brigadeService.getAll();
+        model.addAttribute("brigadeListId", brigadeListId);
         return "plot/newPlot";
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Plot plot) {
-        plot.setHead(engineerService.getById(plot.getHead().getId()));
+    public String add(Model model, @ModelAttribute("plot") @RequestBody Plot plot) {
         model.addAttribute("plot", plotService.create(plot));
         return "redirect:/ui/plot/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Plot plot) {
+    public String update(Model model, @ModelAttribute("plot") @RequestBody Plot plot) {
 
         plotService.update(plot);
         return "redirect:/ui/plot/get/all";

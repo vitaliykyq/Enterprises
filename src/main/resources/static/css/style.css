@@ -19,7 +19,7 @@ th {
 .updateForm form {
     display: grid;
     grid-template-columns: auto auto;
-    grid-template-rows: repeat(4, auto) 40px;
+    grid-template-rows: repeat(4, auto) ;
     row-gap: 14px;
     column-gap: 20px;
 }
@@ -157,8 +157,10 @@ button:active {
 }
 
 .btnDrop {
-    width: 30px;
+    width: auto;
     height: 30px;
+    padding-right: 2px;
+    padding-left: 2px;
 }
 
 .dropItem {

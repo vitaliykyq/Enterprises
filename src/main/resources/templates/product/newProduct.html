@@ -2,34 +2,64 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Civil</title>
+    <title>Add Product</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
 <div class="segment">
-    <h1>ADD CIVIL</h1>
+    <h1>ADD PRODUCT</h1>
 </div>
 <div class="updateForm" style="margin-bottom: 150px">
-    <form action="#" th:action="@{/ui/civil/add}" th:object="${civil}"
+    <form action="#" th:action="@{/ui/product/add}" th:object="${product}"
           method="POST">
-        <label for="num2">IsBusiness</label>
-        <select id="num2" th:field="*{isBusiness}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
+        <label for="num2">Kind</label>
+        <input id="num2" th:field="*{kind}"  required>
+        <!--<label for="num3">Plane</label>
+        <select id="num3" th:field="*{plane}">
+            <option th:value="${null}">Null</option>
+            <option th:each="planeListId: ${planeListId}"
+                    th:value="${planeListId.id}" th:text="${planeListId.name}">
+            </option>
         </select>
-        <label for="num3">Seats</label>
-        <input id="num3" type="number" th:field="*{seats}"  required>
-        <label for="num4">IsBaggage</label>
-        <select id="num4" th:field="*{isBaggage}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
+        <label for="num4">Glider</label>
+        <select id="num4" th:field="*{glider}">
+            <option th:value="${null}">Null</option>
+            <option th:each="gliderListId: ${gliderListId}"
+                    th:value="${gliderListId.id}" th:text="${gliderListId.name}">
+            </option>
+        </select>
+        <label for="num5">HangGlider</label>
+        <select id="num5" th:field="*{hangGlider}">
+            <option th:value="${null}">Null</option>
+            <option th:each="hangGliderListId: ${hangGliderListId}"
+                    th:value="${hangGliderListId.id}" th:text="${hangGliderListId.name}">
+            </option>
+        </select>
+        <label for="num6">Helicopter</label>
+        <select id="num6" th:field="*{helicopter}">
+            <option th:value="${null}">Null</option>
+            <option th:each="helicopterListId: ${helicopterListId}"
+                    th:value="${helicopterListId.id}" th:text="${helicopterListId.name}">
+            </option>
+        </select>
+        <label for="num7">Missile</label>
+        <select id="num7" th:field="*{missile}">
+            <option th:value="${null}">Null</option>
+            <option th:each="missileListId: ${missileListId}"
+                    th:value="${missileListId.id}" th:text="${missileListId.name}">
+            </option>
+        </select>-->
+        <label for="num8">Operation</label>
+        <select multiple id="num8" th:field="*{operation}">
+            <option th:value="${null}">Null</option>
+            <option th:value="${'Тест'}">Тест</option>
         </select>
         <button type="submit" class="newBtn" style="transition: 0.5s; padding: 0; font-size: 0.8em">SAVE</button>
     </form>
 </div>
 <hr>
 
-<a th:href="@{/ui/civil/get/all}">
+<a th:href="@{/ui/product/get/all}">
     <button class="backBtn" style="padding: 0">Back</button>
 </a>
 </body>

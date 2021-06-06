@@ -48,13 +48,13 @@ public class PersonUIController {
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Person person) {
+    public String add(Model model, @ModelAttribute("person") @RequestBody Person person) {
         model.addAttribute("person", service.create(person));
         return "redirect:/ui/person/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Person person) {
+    public String update(Model model, @ModelAttribute("person") @RequestBody Person person) {
 
         service.update(person);
         return "redirect:/ui/person/get/all";

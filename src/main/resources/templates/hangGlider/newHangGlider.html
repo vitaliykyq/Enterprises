@@ -2,34 +2,40 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Civil</title>
+    <title>Add HangGlider</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
 <div class="segment">
-    <h1>ADD CIVIL</h1>
+    <h1>ADD HANGGLIDER</h1>
 </div>
 <div class="updateForm" style="margin-bottom: 150px">
-    <form action="#" th:action="@{/ui/civil/add}" th:object="${civil}"
+    <form action="#" th:action="@{/ui/hangGlider/add}" th:object="${hangGlider}"
           method="POST">
-        <label for="num2">IsBusiness</label>
-        <select id="num2" th:field="*{isBusiness}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
-        </select>
-        <label for="num3">Seats</label>
-        <input id="num3" type="number" th:field="*{seats}"  required>
-        <label for="num4">IsBaggage</label>
-        <select id="num4" th:field="*{isBaggage}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
-        </select>
+        <label for="num2">Name</label>
+        <input id="num2" th:field="*{name}"  required>
+        <label for="num3">Model</label>
+        <input id="num3" th:field="*{model}"  required>
+        <label for="num4">Issue</label>
+        <input id="num4" type="number" th:field="*{issue}"  required>
+        <label for="num5">Aircrew</label>
+        <input id="num5" type="number" th:field="*{aircrew}"  required>
+        <label for="num6">Height</label>
+        <input id="num6" type="number" th:field="*{height}"  required>
+        <label for="num7">Length</label>
+        <input id="num7" type="number" th:field="*{length}"  required>
+        <label for="num8">Ceiling</label>
+        <input id="num8" type="number" th:field="*{ceiling}"  required>
+        <label for="num9">EngineType</label>
+        <input id="num9" th:field="*{engineType}"  required>
+        <label for="num10">Rating</label>
+        <input id="num10" th:field="*{rating}"  required>
         <button type="submit" class="newBtn" style="transition: 0.5s; padding: 0; font-size: 0.8em">SAVE</button>
     </form>
 </div>
 <hr>
 
-<a th:href="@{/ui/civil/get/all}">
+<a th:href="@{/ui/hangGlider/get/all}">
     <button class="backBtn" style="padding: 0">Back</button>
 </a>
 </body>

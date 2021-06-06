@@ -32,7 +32,7 @@ public class ProductUIController {
     @Autowired
     ProductServiceImpl productService;
 
-    @Autowired
+    /*@Autowired
     PlaneServiceImpl planeService;
 
     @Autowired
@@ -45,7 +45,7 @@ public class ProductUIController {
     HelicopterServiceImpl helicopterService;
 
     @Autowired
-    MissileServiceImpl missileService;
+    MissileServiceImpl missileService;*/
 
     @RequestMapping("/get/all")
     public String showAll(Model model){
@@ -61,7 +61,7 @@ public class ProductUIController {
         Product product = productService.getById(id);
         model.addAttribute("product",product);
 
-        List<Plane> planeListId = planeService.getAll();
+        /*List<Plane> planeListId = planeService.getAll();
         model.addAttribute("planeListId", planeListId);
 
         List<Glider> gliderListId = gliderService.getAll();
@@ -74,7 +74,7 @@ public class ProductUIController {
         model.addAttribute("helicopterListId", helicopterListId);
 
         List<Missile> missileListId = missileService.getAll();
-        model.addAttribute("missileListId", missileListId);
+        model.addAttribute("missileListId", missileListId);*/
         return "product/updateProduct";
     }
 
@@ -83,7 +83,7 @@ public class ProductUIController {
         Product product = new Product();
         model.addAttribute("product", product);
 
-        List<Plane> planeListId = planeService.getAll();
+        /*List<Plane> planeListId = planeService.getAll();
         model.addAttribute("planeListId", planeListId);
 
         List<Glider> gliderListId = gliderService.getAll();
@@ -96,24 +96,18 @@ public class ProductUIController {
         model.addAttribute("helicopterListId", helicopterListId);
 
         List<Missile> missileListId = missileService.getAll();
-        model.addAttribute("missileListId", missileListId);
+        model.addAttribute("missileListId", missileListId);*/
         return "product/newProduct";
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Product product) {
-        product.setPlane(planeService.getById(product.getPlane().getId()));
-        product.setGlider(gliderService.getById(product.getGlider().getId()));
-        product.setHangGlider(hangGliderService.getById(product.getHangGlider().getId()));
-        product.setHelicopter(helicopterService.getById(product.getHelicopter().getId()));
-        product.setMissile(missileService.getById(product.getMissile().getId()));
-
+    public String add(Model model, @ModelAttribute("product") @RequestBody Product product) {
         model.addAttribute("product", productService.create(product));
         return "redirect:/ui/product/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Product product) {
+    public String update(Model model, @ModelAttribute("product") @RequestBody Product product) {
 
         productService.update(product);
         return "redirect:/ui/product/get/all";

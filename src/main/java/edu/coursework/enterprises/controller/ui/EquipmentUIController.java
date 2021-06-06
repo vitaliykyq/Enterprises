@@ -3,7 +3,7 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    EquipmentUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
@@ -48,13 +48,13 @@ public class EquipmentUIController {
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Equipment equipment) {
+    public String add(Model model, @ModelAttribute("equipment") @RequestBody Equipment equipment) {
         model.addAttribute("equipment", service.create(equipment));
         return "redirect:/ui/equipment/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Equipment equipment) {
+    public String update(Model model, @ModelAttribute("equipment") @RequestBody Equipment equipment) {
 
         service.update(equipment);
         return "redirect:/ui/equipment/get/all";

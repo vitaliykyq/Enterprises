@@ -3,14 +3,16 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    EngineerUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
 
 import edu.coursework.enterprises.model.Engineer;
 import edu.coursework.enterprises.model.Person;
+import edu.coursework.enterprises.model.Worker;
 import edu.coursework.enterprises.service.engineer.impls.EngineerServiceImpl;
+import edu.coursework.enterprises.service.person.impls.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,12 +25,15 @@ import java.util.List;
 public class EngineerUIController {
 
     @Autowired
-    EngineerServiceImpl service;
+    EngineerServiceImpl engineerService;
+
+    @Autowired
+    PersonServiceImpl personService;
 
     @RequestMapping("/get/all")
     public String showAll(Model model){
 
-        List<Engineer> engineerList = service.getAll();
+        List<Engineer> engineerList = engineerService.getAll();
         model.addAttribute("engineerList", engineerList);
 
         return "engineer/engineerList";
@@ -36,8 +41,11 @@ public class EngineerUIController {
 
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
-        Engineer engineer = service.getById(id);
+        Engineer engineer = engineerService.getById(id);
         model.addAttribute("engineer",engineer);
+
+        List<Person> personListId = personService.getAll();
+        model.addAttribute("personListId", personListId);
         return "engineer/updateEngineer";
     }
 
@@ -45,25 +53,28 @@ public class EngineerUIController {
     public String showNewForm(Model model) {
         Engineer engineer = new Engineer();
         model.addAttribute("engineer", engineer);
+
+        List<Person> personListId = personService.getAll();
+        model.addAttribute("personListId", personListId);
         return "engineer/newEngineer";
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Engineer engineer) {
-        model.addAttribute("engineer", service.create(engineer));
+    public String add(Model model, @ModelAttribute("engineer") @RequestBody Engineer engineer) {
+        model.addAttribute("engineer", engineerService.create(engineer));
         return "redirect:/ui/engineer/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Engineer engineer) {
+    public String update(Model model, @ModelAttribute("engineer") @RequestBody Engineer engineer) {
 
-        service.update(engineer);
+        engineerService.update(engineer);
         return "redirect:/ui/engineer/get/all";
     }
 
     @RequestMapping("/delete/{id}")
     public String delete(Model model, @PathVariable String id){
-        service.delete(id);
+        engineerService.delete(id);
         return "redirect:/ui/engineer/get/all";
     }
 }

@@ -48,13 +48,13 @@ public class MissileUIController {
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Missile missile) {
+    public String add(Model model, @ModelAttribute("missile") @RequestBody Missile missile) {
         model.addAttribute("missile", service.create(missile));
         return "redirect:/ui/missile/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Missile missile) {
+    public String update(Model model, @ModelAttribute("missile") @RequestBody Missile missile) {
 
         service.update(missile);
         return "redirect:/ui/missile/get/all";

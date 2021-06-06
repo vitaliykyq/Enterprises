@@ -27,11 +27,11 @@ public class Product {
     private String id;
 
     private String kind;
-    private Plane plane;
+    /*private Plane plane;
     private Glider glider;
     private HangGlider hangGlider;
     private Helicopter helicopter;
-    private Missile missile;
+    private Missile missile;*/
     private List<String> operation;
 
     private Date createdAt;

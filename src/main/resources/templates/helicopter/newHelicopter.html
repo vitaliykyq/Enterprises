@@ -2,34 +2,70 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Civil</title>
+    <title>Add Helicopter</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
 <div class="segment">
-    <h1>ADD CIVIL</h1>
+    <h1>ADD HELICOPTER</h1>
 </div>
 <div class="updateForm" style="margin-bottom: 150px">
-    <form action="#" th:action="@{/ui/civil/add}" th:object="${civil}"
+    <form action="#" th:action="@{/ui/helicopter/add}" th:object="${helicopter}"
           method="POST">
-        <label for="num2">IsBusiness</label>
-        <select id="num2" th:field="*{isBusiness}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
-        </select>
-        <label for="num3">Seats</label>
-        <input id="num3" type="number" th:field="*{seats}"  required>
-        <label for="num4">IsBaggage</label>
-        <select id="num4" th:field="*{isBaggage}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
-        </select>
+        <label for="num2">Name</label>
+        <input id="num2" th:field="*{name}"  required>
+        <label for="num3">Model</label>
+        <input id="num3" th:field="*{model}"  required>
+        <label for="num4">Civil</label>
+        <div id="num4">
+            <label for="id1">Id</label>
+            <select id="id1" style="transition: 0.5s" th:field="*{civil.id}">
+                <option th:value="${null}">Null</option>
+                <option th:each="civilListId: ${civilListId}"
+                        th:value="${civilListId.id}" th:text="${civilListId.id}">
+                </option>
+            </select>
+        </div>
+        <label for="num5">Military</label>
+        <div id="num5">
+            <label for="id2">Id</label>
+            <select id="id2" style="transition: 0.5s" th:field="*{military.id}">
+                <option th:value="${null}">Null</option>
+                <option th:each="militaryListId: ${militaryListId}"
+                        th:value="${militaryListId.id}" th:text="${militaryListId.id}">
+                </option>
+            </select>
+        </div>
+        <label for="num6">Transport</label>
+        <div id="num6">
+            <label for="id3">Id</label>
+            <select id="id3" style="transition: 0.5s" th:field="*{transport.id}">
+                <option th:value="${null}">Null</option>
+                <option th:each="transportListId: ${transportListId}"
+                        th:value="${transportListId.id}" th:text="${transportListId.id}">
+                </option>
+            </select>
+        </div>
+        <label for="num7">Issue</label>
+        <input id="num7" type="number" th:field="*{issue}"  required>
+        <label for="num8">Aircrew</label>
+        <input id="num8" type="number" th:field="*{aircrew}"  required>
+        <label for="num9">Height</label>
+        <input id="num9" type="number" th:field="*{height}"  required>
+        <label for="num10">Length</label>
+        <input id="num10" type="number" th:field="*{length}"  required>
+        <label for="num11">Ceiling</label>
+        <input id="num11" type="number" th:field="*{ceiling}"  required>
+        <label for="num12">EngineType</label>
+        <input id="num12" th:field="*{engineType}"  required>
+        <label for="num13">Rating</label>
+        <input id="num13" th:field="*{rating}"  required>
         <button type="submit" class="newBtn" style="transition: 0.5s; padding: 0; font-size: 0.8em">SAVE</button>
     </form>
 </div>
 <hr>
 
-<a th:href="@{/ui/civil/get/all}">
+<a th:href="@{/ui/helicopter/get/all}">
     <button class="backBtn" style="padding: 0">Back</button>
 </a>
 </body>

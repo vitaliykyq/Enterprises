@@ -3,7 +3,7 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    HangGliderUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
@@ -48,13 +48,13 @@ public class HangGliderUIController {
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody HangGlider hangGlider) {
+    public String add(Model model, @ModelAttribute("hangGlider") @RequestBody HangGlider hangGlider) {
         model.addAttribute("hangGlider", service.create(hangGlider));
         return "redirect:/ui/hangGlider/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody HangGlider hangGlider) {
+    public String update(Model model, @ModelAttribute("hangGlider") @RequestBody HangGlider hangGlider) {
 
         service.update(hangGlider);
         return "redirect:/ui/hangGlider/get/all";

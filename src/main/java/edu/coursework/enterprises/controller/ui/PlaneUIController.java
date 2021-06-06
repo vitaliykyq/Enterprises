@@ -3,7 +3,7 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    PlaneUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
@@ -64,14 +64,6 @@ public class PlaneUIController {
         return "plane/updatePlane";
     }
 
-    @PostMapping("/update")
-    public String update(Model model,
-                         @ModelAttribute("employee") @RequestBody Plane plane) {
-
-        planeService.update(plane);
-        return "redirect:/ui/plane/get/all";
-    }
-
     @GetMapping("/showNewForm")
     public String showNewForm(Model model) {
         Plane plane = new Plane();
@@ -88,12 +80,15 @@ public class PlaneUIController {
         return "plane/newPlane";
     }
 
-    @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Plane plane) {
-        plane.setCivil(civilService.getById(plane.getCivil().getId()));
-        plane.setMilitary(militaryService.getById(plane.getMilitary().getId()));
-        plane.setTransport(transportService.getById(plane.getTransport().getId()));
+    @PostMapping("/update")
+    public String update(Model model, @ModelAttribute("plane") @RequestBody Plane plane) {
 
+        planeService.update(plane);
+        return "redirect:/ui/plane/get/all";
+    }
+
+    @PostMapping("/add")
+    public String add(Model model, @ModelAttribute("plane") @RequestBody Plane plane) {
         model.addAttribute("plane", planeService.create(plane));
         return "redirect:/ui/plane/get/all";
     }

@@ -2,7 +2,7 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Civil List</title>
+    <title>Equipment List</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
@@ -11,34 +11,34 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>IsBusiness</th>
-                    <th>Seats</th>
-                    <th>IsBaggage</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Weight</th>
                     <th>CreatedAt</th>
                     <th>ModifiedAt</th>
                     <th class="options" colspan="2">OPTIONS</th>
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="civil: ${civilList}">
-                <td th:text="${civil.id}"></td>
-                <td th:text="${civil.isBusiness}"></td>
-                <td th:text="${civil.seats}"></td>
-                <td th:text="${civil.isBaggage}"></td>
-                <td th:text="${civil.createdAt}"></td>
-                <td th:text="${civil.modifiedAt}"></td>
+            <tr th:each="equipment: ${equipmentList}">
+                <td th:text="${equipment.id}"></td>
+                <td th:text="${equipment.name}"></td>
+                <td th:text="${equipment.price}"></td>
+                <td th:text="${equipment.weight}"></td>
+                <td th:text="${equipment.createdAt}"></td>
+                <td th:text="${equipment.modifiedAt}"></td>
                 <td>
-                    <a th:href="@{/ui/civil/delete/{id}(id=${civil.id})}">
+                    <a th:href="@{/ui/equipment/delete/{id}(id=${equipment.id})}">
                         <button class="btn delBtn" style="transition: 0.5s; padding: 0">Delete</button>
                     </a>
-                    <a th:href="@{/ui/civil/showUpdateForm/{id}(id=${civil.id})}">
+                    <a th:href="@{/ui/equipment/showUpdateForm/{id}(id=${equipment.id})}">
                         <button class="btn uppBtn" style="transition: 0.5s; padding: 0">Update</button>
                     </a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a th:href = "@{/ui/civil/showNewForm}">
+        <a th:href = "@{/ui/equipment/showNewForm}">
             <button class="btn addBtn" style="transition: 0.5s; padding: 0">Add</button>
         </a>
     </div>

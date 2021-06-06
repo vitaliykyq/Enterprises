@@ -3,12 +3,14 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    AccountingUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
 
 import edu.coursework.enterprises.model.Accounting;
+import edu.coursework.enterprises.model.Laboratory;
+import edu.coursework.enterprises.model.Product;
 import edu.coursework.enterprises.service.accounting.impls.AccountingServiceImpl;
 import edu.coursework.enterprises.service.laboratory.impls.LaboratoryServiceImpl;
 import edu.coursework.enterprises.service.product.impls.ProductServiceImpl;
@@ -45,6 +47,12 @@ public class AccountingUIController {
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Accounting accounting = accountingService.getById(id);
         model.addAttribute("accounting", accounting);
+
+        List<Product> productListId = productService.getAll();
+        model.addAttribute("productListId", productListId);
+
+        List<Laboratory> laboratoryListId = laboratoryService.getAll();
+        model.addAttribute("laboratoryListId", laboratoryListId);
         return "accounting/updateAccounting";
     }
 
@@ -52,19 +60,23 @@ public class AccountingUIController {
     public String showNewForm(Model model) {
         Accounting accounting = new Accounting();
         model.addAttribute("accounting", accounting);
+
+        List<Product> productListId = productService.getAll();
+        model.addAttribute("productListId", productListId);
+
+        List<Laboratory> laboratoryListId = laboratoryService.getAll();
+        model.addAttribute("laboratoryListId", laboratoryListId);
         return "accounting/newAccounting";
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Accounting accounting) {
-        accounting.setProduct(productService.getById(accounting.getProduct().getId()));
-        accounting.setLaboratory(laboratoryService.getById(accounting.getLaboratory().getId()));
+    public String add(Model model, @ModelAttribute("accounting") @RequestBody Accounting accounting) {
         model.addAttribute("accounting", accountingService.create(accounting));
         return "redirect:/ui/accounting/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Accounting accounting) {
+    public String update(Model model, @ModelAttribute("accounting") @RequestBody Accounting accounting) {
 
         accountingService.update(accounting);
         return "redirect:/ui/accounting/get/all";

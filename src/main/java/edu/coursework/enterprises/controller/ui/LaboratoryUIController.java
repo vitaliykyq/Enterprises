@@ -3,14 +3,16 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    LaboratoryUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
 
 import edu.coursework.enterprises.model.Laboratory;
+import edu.coursework.enterprises.model.Person;
 import edu.coursework.enterprises.model.Testing;
 import edu.coursework.enterprises.service.laboratory.impls.LaboratoryServiceImpl;
+import edu.coursework.enterprises.service.testing.impls.TestingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,12 +25,15 @@ import java.util.List;
 public class LaboratoryUIController {
 
     @Autowired
-    LaboratoryServiceImpl service;
+    LaboratoryServiceImpl laboratoryService;
+
+    @Autowired
+    TestingServiceImpl testingService;
 
     @RequestMapping("/get/all")
     public String showAll(Model model){
 
-        List<Laboratory> laboratoryList = service.getAll();
+        List<Laboratory> laboratoryList = laboratoryService.getAll();
         model.addAttribute("laboratoryList", laboratoryList);
 
         return "laboratory/laboratoryList";
@@ -36,8 +41,11 @@ public class LaboratoryUIController {
 
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
-        Laboratory laboratory = service.getById(id);
-        model.addAttribute("laboratory",laboratory);
+        Laboratory laboratory = laboratoryService.getById(id);
+        model.addAttribute("laboratory", laboratory);
+
+        List<Testing> testingListId = testingService.getAll();
+        model.addAttribute("testingListId", testingListId);
         return "laboratory/updateLaboratory";
     }
 
@@ -45,25 +53,28 @@ public class LaboratoryUIController {
     public String showNewForm(Model model) {
         Laboratory laboratory = new Laboratory();
         model.addAttribute("laboratory", laboratory);
+
+        List<Testing> testingListId = testingService.getAll();
+        model.addAttribute("testingListId", testingListId);
         return "laboratory/newLaboratory";
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Laboratory laboratory) {
-        model.addAttribute("laboratory", service.create(laboratory));
+    public String add(Model model, @ModelAttribute("laboratory") @RequestBody Laboratory laboratory) {
+        model.addAttribute("laboratory", laboratoryService.create(laboratory));
         return "redirect:/ui/laboratory/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Laboratory laboratory) {
+    public String update(Model model, @ModelAttribute("laboratory") @RequestBody Laboratory laboratory) {
 
-        service.update(laboratory);
+        laboratoryService.update(laboratory);
         return "redirect:/ui/laboratory/get/all";
     }
 
     @RequestMapping("/delete/{id}")
     public String delete(Model model, @PathVariable String id){
-        service.delete(id);
+        laboratoryService.delete(id);
         return "redirect:/ui/laboratory/get/all";
     }
 }

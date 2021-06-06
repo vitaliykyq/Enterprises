@@ -2,7 +2,7 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Civil List</title>
+    <title>Product List</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
@@ -11,34 +11,71 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>IsBusiness</th>
-                    <th>Seats</th>
-                    <th>IsBaggage</th>
+                    <th>Kind</th>
+                    <!--<th>Plane</th>
+                    <th>Glider</th>
+                    <th>HangGlider</th>
+                    <th>Helicopter</th>
+                    <th>Missile</th>-->
+                    <th>Operation</th>
                     <th>CreatedAt</th>
                     <th>ModifiedAt</th>
                     <th class="options" colspan="2">OPTIONS</th>
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="civil: ${civilList}">
-                <td th:text="${civil.id}"></td>
-                <td th:text="${civil.isBusiness}"></td>
-                <td th:text="${civil.seats}"></td>
-                <td th:text="${civil.isBaggage}"></td>
-                <td th:text="${civil.createdAt}"></td>
-                <td th:text="${civil.modifiedAt}"></td>
+            <tr th:each="product: ${productList}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.kind}"></td>
+                <!--<td>
+                    <button class="btn btnDrop" th:text="${product.plane.id}"
+                            th:data-id="${product.plane.id + product.id}"
+                            th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
+                    <div class="dropItem" th:data-id-drop="${product.plane.id + product.id}" style="transition: 0.5s">
+                        <p>Plane</p>
+                        <p th:text="${product.product.plane.name}"></p>
+                        <p>Glider</p>
+                        <p th:text="${product.product.glider.name}"></p>
+                        <p>HangGlider</p>
+                        <p th:text="${product.product.hangGlider.name}"></p>
+                        <p>Helicopter</p>
+                        <p th:text="${product.product.helicopter.name}"></p>
+                        <p>Missile</p>
+                        <p th:text="${product.product.missile.name}"></p>
+                        <p>CreatedAt</p>
+                        <p th:text="${produce.product.createdAt}"></p>
+                        <p>ModifiedAt</p>
+                        <p th:text="${produce.product.modifiedAt}"></p>
+                        <a class="btnDropItem" th:href="@{/ui/type/get/all}">
+                            <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
+                        </a>
+                    </div>
+                </td>
+                <td th:text="${product.glider}"></td>
+                <td th:text="${product.hangGlider}"></td>
+                <td th:text="${product.helicopter}"></td>
+                <td th:text="${product.missile}"></td>-->
                 <td>
-                    <a th:href="@{/ui/civil/delete/{id}(id=${civil.id})}">
+                    <ol>
+                        <li th:each="operationListIds: ${product.operation}">
+                            <span th:text="${operationListIds}"></span>
+                        </li>
+                    </ol>
+                </td>
+                <td th:text="${product.createdAt}"></td>
+                <td th:text="${product.modifiedAt}"></td>
+                <td>
+                    <a th:href="@{/ui/product/delete/{id}(id=${product.id})}">
                         <button class="btn delBtn" style="transition: 0.5s; padding: 0">Delete</button>
                     </a>
-                    <a th:href="@{/ui/civil/showUpdateForm/{id}(id=${civil.id})}">
+                    <a th:href="@{/ui/product/showUpdateForm/{id}(id=${product.id})}">
                         <button class="btn uppBtn" style="transition: 0.5s; padding: 0">Update</button>
                     </a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a th:href = "@{/ui/civil/showNewForm}">
+        <a th:href = "@{/ui/product/showNewForm}">
             <button class="btn addBtn" style="transition: 0.5s; padding: 0">Add</button>
         </a>
     </div>

@@ -3,7 +3,7 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    HelicopterUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
@@ -51,7 +51,7 @@ public class HelicopterUIController {
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Helicopter helicopter = helicopterService.getById(id);
-        model.addAttribute("helicopter",helicopter);
+        model.addAttribute("helicopter", helicopter);
 
         List<Civil> civilListId = civilService.getAll();
         model.addAttribute("civilListId", civilListId);
@@ -81,17 +81,13 @@ public class HelicopterUIController {
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Helicopter helicopter) {
-        helicopter.setCivil(civilService.getById(helicopter.getCivil().getId()));
-        helicopter.setMilitary(militaryService.getById(helicopter.getMilitary().getId()));
-        helicopter.setTransport(transportService.getById(helicopter.getTransport().getId()));
-
+    public String add(Model model, @ModelAttribute("helicopter") @RequestBody Helicopter helicopter) {
         model.addAttribute("helicopter", helicopterService.create(helicopter));
         return "redirect:/ui/helicopter/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Helicopter helicopter) {
+    public String update(Model model, @ModelAttribute("helicopter") @RequestBody Helicopter helicopter) {
 
         helicopterService.update(helicopter);
         return "redirect:/ui/helicopter/get/all";

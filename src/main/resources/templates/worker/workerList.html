@@ -2,7 +2,7 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Civil List</title>
+    <title>Worker List</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
@@ -11,36 +11,82 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>IsBusiness</th>
-                    <th>Seats</th>
-                    <th>IsBaggage</th>
+                    <th>Person</th>
+                    <th>Experience</th>
                     <th>CreatedAt</th>
                     <th>ModifiedAt</th>
                     <th class="options" colspan="2">OPTIONS</th>
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="civil: ${civilList}">
-                <td th:text="${civil.id}"></td>
-                <td th:text="${civil.isBusiness}"></td>
-                <td th:text="${civil.seats}"></td>
-                <td th:text="${civil.isBaggage}"></td>
-                <td th:text="${civil.createdAt}"></td>
-                <td th:text="${civil.modifiedAt}"></td>
+            <tr th:each="worker: ${workerList}">
+                <td th:text="${worker.id}"></td>
+                <td th:text="${worker.person}"></td>
                 <td>
-                    <a th:href="@{/ui/civil/delete/{id}(id=${civil.id})}">
+                    <button class="btn btnDrop" th:text="${worker.person.firstName}"
+                            th:data-id="${worker.person.id + worker.id}"
+                            th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
+                    <div class="dropItem" th:data-id-drop="${worker.person.id + worker.id}" style="transition: 0.5s">
+                        <p>FirstName</p>
+                        <p th:text="${worker.person.firstName}"></p>
+                        <p>SecondName</p>
+                        <p th:text="${worker.person.secondName}"></p>
+                        <p>Year</p>
+                        <p th:text="${worker.person.year}"></p>
+                        <p>Telephone</p>
+                        <p th:text="${worker.person.telephone}"></p>
+                        <p>Address</p>
+                        <p th:text="${worker.person.address}"></p>
+                        <p>CreatedAt</p>
+                        <p th:text="${worker.person.createdAt}"></p>
+                        <p>ModifiedAt</p>
+                        <p th:text="${worker.person.modifiedAt}"></p>
+                        <a class="btnDropItem" th:href="@{/ui/type/get/all}">
+                            <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
+                        </a>
+                    </div>
+                </td>
+                <td th:text="${worker.experience}"></td>
+                <td th:text="${worker.createdAt}"></td>
+                <td th:text="${worker.modifiedAt}"></td>
+                <td>
+                    <a th:href="@{/ui/worker/delete/{id}(id=${worker.id})}">
                         <button class="btn delBtn" style="transition: 0.5s; padding: 0">Delete</button>
                     </a>
-                    <a th:href="@{/ui/civil/showUpdateForm/{id}(id=${civil.id})}">
+                    <a th:href="@{/ui/worker/showUpdateForm/{id}(id=${worker.id})}">
                         <button class="btn uppBtn" style="transition: 0.5s; padding: 0">Update</button>
                     </a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a th:href = "@{/ui/civil/showNewForm}">
+        <a th:href = "@{/ui/worker/showNewForm}">
             <button class="btn addBtn" style="transition: 0.5s; padding: 0">Add</button>
         </a>
     </div>
+    <script th:inline="javascript">
+        let listElem = document.querySelectorAll(".dropItem");
+        function kl(obj) {
+            listElem.forEach(elem => { elem.style.display = "none";});
+
+            if(obj.getAttribute("data-status") === "on") {
+                document.querySelectorAll(".btnDrop").
+                forEach(elem => { elem.setAttribute("data-status", "off"); })
+                return;
+            }
+
+            listElem.forEach(elem => {
+                if(elem.getAttribute("data-id-drop") === obj.getAttribute("data-id")) {
+                    elem.style.display = "grid";
+                    elem.style.position = "absolute";
+                    elem.style.gridTemplateColumns = "auto auto";
+                    obj.setAttribute("data-status", "on");
+                }else{
+                    document.querySelectorAll(".btnDrop").
+                    forEach(elem => { if(elem != obj) elem.setAttribute("data-status", "off"); })
+                }
+            })
+        }
+    </script>
 </body>
 </html>

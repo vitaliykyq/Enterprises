@@ -8,6 +8,7 @@ package edu.coursework.enterprises.controller.ui;
     @since:    26.04.2021     
 */
 
+import edu.coursework.enterprises.model.Person;
 import edu.coursework.enterprises.model.Worker;
 import edu.coursework.enterprises.service.person.impls.PersonServiceImpl;
 import edu.coursework.enterprises.service.worker.impls.WorkerServiceImpl;
@@ -41,6 +42,9 @@ public class WorkerUIController {
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Worker worker = workerService.getById(id);
         model.addAttribute("worker",worker);
+
+        List<Person> personListId = personService.getAll();
+        model.addAttribute("personListId", personListId);
         return "worker/updateWorker";
     }
 
@@ -48,18 +52,21 @@ public class WorkerUIController {
     public String showNewForm(Model model) {
         Worker worker = new Worker();
         model.addAttribute("worker", worker);
+
+        List<Person> personListId = personService.getAll();
+        model.addAttribute("personListId", personListId);
         return "worker/newWorker";
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Worker worker) {
+    public String add(Model model, @ModelAttribute("worker") @RequestBody Worker worker) {
         worker.setPerson(personService.getById(worker.getPerson().getId()));
         model.addAttribute("worker", workerService.create(worker));
         return "redirect:/ui/worker/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Worker worker) {
+    public String update(Model model, @ModelAttribute("worker") @RequestBody Worker worker) {
 
         workerService.update(worker);
         return "redirect:/ui/worker/get/all";

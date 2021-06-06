@@ -48,13 +48,13 @@ public class TransportUIController {
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Transport transport) {
+    public String add(Model model, @ModelAttribute("transport") @RequestBody Transport transport) {
         model.addAttribute("transport", service.create(transport));
         return "redirect:/ui/transport/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Transport transport) {
+    public String update(Model model, @ModelAttribute("transport") @RequestBody Transport transport) {
 
         service.update(transport);
         return "redirect:/ui/transport/get/all";

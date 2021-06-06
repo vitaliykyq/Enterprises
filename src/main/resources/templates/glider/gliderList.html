@@ -2,7 +2,7 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Civil List</title>
+    <title>Glider List</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
@@ -11,34 +11,44 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>IsBusiness</th>
-                    <th>Seats</th>
-                    <th>IsBaggage</th>
+                    <th>Name</th>
+                    <th>Model</th>
+                    <th>Issue</th>
+                    <th>Aircrew</th>
+                    <th>Height</th>
+                    <th>Length</th>
+                    <th>Ceiling</th>
+                    <th>EngineType</th>
                     <th>CreatedAt</th>
                     <th>ModifiedAt</th>
                     <th class="options" colspan="2">OPTIONS</th>
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="civil: ${civilList}">
-                <td th:text="${civil.id}"></td>
-                <td th:text="${civil.isBusiness}"></td>
-                <td th:text="${civil.seats}"></td>
-                <td th:text="${civil.isBaggage}"></td>
-                <td th:text="${civil.createdAt}"></td>
-                <td th:text="${civil.modifiedAt}"></td>
+            <tr th:each="glider: ${gliderList}">
+                <td th:text="${glider.id}"></td>
+                <td th:text="${glider.name}"></td>
+                <td th:text="${glider.model}"></td>
+                <td th:text="${glider.issue}"></td>
+                <td th:text="${glider.aircrew}"></td>
+                <td th:text="${glider.height}"></td>
+                <td th:text="${glider.length}"></td>
+                <td th:text="${glider.ceiling}"></td>
+                <td th:text="${glider.engineType}"></td>
+                <td th:text="${glider.createdAt}"></td>
+                <td th:text="${glider.modifiedAt}"></td>
                 <td>
-                    <a th:href="@{/ui/civil/delete/{id}(id=${civil.id})}">
+                    <a th:href="@{/ui/glider/delete/{id}(id=${glider.id})}">
                         <button class="btn delBtn" style="transition: 0.5s; padding: 0">Delete</button>
                     </a>
-                    <a th:href="@{/ui/civil/showUpdateForm/{id}(id=${civil.id})}">
+                    <a th:href="@{/ui/glider/showUpdateForm/{id}(id=${glider.id})}">
                         <button class="btn uppBtn" style="transition: 0.5s; padding: 0">Update</button>
                     </a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a th:href = "@{/ui/civil/showNewForm}">
+        <a th:href = "@{/ui/glider/showNewForm}">
             <button class="btn addBtn" style="transition: 0.5s; padding: 0">Add</button>
         </a>
     </div>

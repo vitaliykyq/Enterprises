@@ -2,7 +2,7 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Civil List</title>
+    <title>HangGlider List</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
@@ -11,34 +11,46 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>IsBusiness</th>
-                    <th>Seats</th>
-                    <th>IsBaggage</th>
+                    <th>Name</th>
+                    <th>Model</th>
+                    <th>Issue</th>
+                    <th>Aircrew</th>
+                    <th>Height</th>
+                    <th>Length</th>
+                    <th>Ceiling</th>
+                    <th>EngineType</th>
+                    <th>Rating</th>
                     <th>CreatedAt</th>
                     <th>ModifiedAt</th>
                     <th class="options" colspan="2">OPTIONS</th>
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="civil: ${civilList}">
-                <td th:text="${civil.id}"></td>
-                <td th:text="${civil.isBusiness}"></td>
-                <td th:text="${civil.seats}"></td>
-                <td th:text="${civil.isBaggage}"></td>
-                <td th:text="${civil.createdAt}"></td>
-                <td th:text="${civil.modifiedAt}"></td>
+            <tr th:each="hangGlider: ${hangGliderList}">
+                <td th:text="${hangGlider.id}"></td>
+                <td th:text="${hangGlider.name}"></td>
+                <td th:text="${hangGlider.model}"></td>
+                <td th:text="${hangGlider.issue}"></td>
+                <td th:text="${hangGlider.aircrew}"></td>
+                <td th:text="${hangGlider.height}"></td>
+                <td th:text="${hangGlider.length}"></td>
+                <td th:text="${hangGlider.ceiling}"></td>
+                <td th:text="${hangGlider.engineType}"></td>
+                <td th:text="${hangGlider.rating}"></td>
+                <td th:text="${hangGlider.createdAt}"></td>
+                <td th:text="${hangGlider.modifiedAt}"></td>
                 <td>
-                    <a th:href="@{/ui/civil/delete/{id}(id=${civil.id})}">
+                    <a th:href="@{/ui/hangGlider/delete/{id}(id=${hangGlider.id})}">
                         <button class="btn delBtn" style="transition: 0.5s; padding: 0">Delete</button>
                     </a>
-                    <a th:href="@{/ui/civil/showUpdateForm/{id}(id=${civil.id})}">
+                    <a th:href="@{/ui/hangGlider/showUpdateForm/{id}(id=${hangGlider.id})}">
                         <button class="btn uppBtn" style="transition: 0.5s; padding: 0">Update</button>
                     </a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a th:href = "@{/ui/civil/showNewForm}">
+        <a th:href = "@{/ui/hangGlider/showNewForm}">
             <button class="btn addBtn" style="transition: 0.5s; padding: 0">Add</button>
         </a>
     </div>

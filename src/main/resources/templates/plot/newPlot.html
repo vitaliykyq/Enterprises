@@ -2,34 +2,52 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Civil</title>
+    <title>Add Plot</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
 <div class="segment">
-    <h1>ADD CIVIL</h1>
+    <h1>ADD PLOT</h1>
 </div>
 <div class="updateForm" style="margin-bottom: 150px">
-    <form action="#" th:action="@{/ui/civil/add}" th:object="${civil}"
+    <form action="#" th:action="@{/ui/plot/add}" th:object="${plot}"
           method="POST">
-        <label for="num2">IsBusiness</label>
-        <select id="num2" th:field="*{isBusiness}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
+        <label for="num2">Number</label>
+        <input id="num2" th:field="*{number}"  required>
+        <label for="num3">ProduceList</label>
+        <select multiple id="num3" th:field="*{produceList}">
+            <option th:value="${null}">Null</option>
+            <option th:each="produceListId: ${produceListId}"
+                    th:value="${produceListId.id}" th:text="${produceListId.product.kind}">
+            </option>
         </select>
-        <label for="num3">Seats</label>
-        <input id="num3" type="number" th:field="*{seats}"  required>
-        <label for="num4">IsBaggage</label>
-        <select id="num4" th:field="*{isBaggage}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
+        <label for="num4">Head</label>
+        <select id="num4" th:field="*{head}"  required>
+            <option th:value="${null}">Null</option>
+            <option th:each="engineerListId: ${engineerListId}"
+                    th:value="${engineerListId.id}" th:text="${engineerListId.experience}">
+            </option>
+        </select>
+        <label for="num5">BrigadeList</label>
+        <select multiple id="num5" th:field="*{brigadeList}">
+            <option th:value="${null}">Null</option>
+            <option th:each="brigadeListId: ${brigadeListId}"
+                    th:value="${brigadeListId.id}" th:text="${brigadeListId.brigadier.person.firstName}">
+            </option>
+        </select>
+        <label for="num6">EngineerList</label>
+        <select multiple id="num6" th:field="*{engineerList}">
+            <option th:value="${null}">Null</option>
+            <option th:each="engineerListId: ${engineerListId}"
+                    th:value="${engineerListId.id}" th:text="${engineerListId.person.name}">
+            </option>
         </select>
         <button type="submit" class="newBtn" style="transition: 0.5s; padding: 0; font-size: 0.8em">SAVE</button>
     </form>
 </div>
 <hr>
 
-<a th:href="@{/ui/civil/get/all}">
+<a th:href="@{/ui/plot/get/all}">
     <button class="backBtn" style="padding: 0">Back</button>
 </a>
 </body>

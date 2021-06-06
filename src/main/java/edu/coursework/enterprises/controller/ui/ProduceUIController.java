@@ -3,12 +3,15 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    ProduceUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
 
+import edu.coursework.enterprises.model.Brigade;
+import edu.coursework.enterprises.model.Engineer;
 import edu.coursework.enterprises.model.Produce;
+import edu.coursework.enterprises.model.Product;
 import edu.coursework.enterprises.service.produce.impls.ProduceServiceImpl;
 import edu.coursework.enterprises.service.product.impls.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +44,9 @@ public class ProduceUIController {
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Produce produce = produceService.getById(id);
         model.addAttribute("produce",produce);
+
+        List<Product> productListId = productService.getAll();
+        model.addAttribute("productListId", productListId);
         return "produce/updateProduce";
     }
 
@@ -48,18 +54,21 @@ public class ProduceUIController {
     public String showNewForm(Model model) {
         Produce produce = new Produce();
         model.addAttribute("produce", produce);
+
+        List<Product> productListId = productService.getAll();
+        model.addAttribute("productListId", productListId);
         return "produce/newProduce";
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Produce produce) {
+    public String add(Model model, @ModelAttribute("produce") @RequestBody Produce produce) {
         produce.setProduct(productService.getById(produce.getProduct().getId()));
         model.addAttribute("produce", produceService.create(produce));
         return "redirect:/ui/produce/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Produce produce) {
+    public String update(Model model, @ModelAttribute("produce") @RequestBody Produce produce) {
 
         produceService.update(produce);
         return "redirect:/ui/produce/get/all";

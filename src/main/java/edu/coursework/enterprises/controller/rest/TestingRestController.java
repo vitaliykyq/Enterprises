@@ -50,9 +50,4 @@ public class TestingRestController {
     public Testing update(@RequestBody Testing testing){
         return service.update(testing);
     }
-
-    @GetMapping("/get/products")
-    public Object getProductsWithTesting(@PathVariable("testing") String testing){
-        return service.getProductsWithTesting(testing);
-    }
 }

@@ -25,7 +25,6 @@ public class Brigade {
     @Id
     private String id;
 
-    private Plot plot;
     private Worker brigadier;
     private List<Worker> workerList;
 

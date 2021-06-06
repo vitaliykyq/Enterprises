@@ -3,7 +3,7 @@ package edu.coursework.enterprises.controller.ui;
 /*
     @author:    Bogdan
     @project:    Enterprises 
-    @class:    CivilUIController 
+    @class:    GliderUIController
     @version:    1.0.0 
     @since:    26.04.2021     
 */
@@ -48,13 +48,13 @@ public class GliderUIController {
     }
 
     @PostMapping("/add")
-    public String add(Model model, @ModelAttribute("employee") @RequestBody Glider glider) {
+    public String add(Model model, @ModelAttribute("glider") @RequestBody Glider glider) {
         model.addAttribute("glider", service.create(glider));
         return "redirect:/ui/glider/get/all";
     }
 
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("employee") @RequestBody Glider glider) {
+    public String update(Model model, @ModelAttribute("glider") @RequestBody Glider glider) {
 
         service.update(glider);
         return "redirect:/ui/glider/get/all";

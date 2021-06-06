@@ -2,25 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Civil</title>
+    <title>Add Transport</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
 <div class="segment">
-    <h1>ADD CIVIL</h1>
+    <h1>ADD TRANSPORT</h1>
 </div>
 <div class="updateForm" style="margin-bottom: 150px">
-    <form action="#" th:action="@{/ui/civil/add}" th:object="${civil}"
+    <form action="#" th:action="@{/ui/transport/add}" th:object="${transport}"
           method="POST">
-        <label for="num2">IsBusiness</label>
-        <select id="num2" th:field="*{isBusiness}"  required>
+        <label for="num2">Cargo</label>
+        <input id="num2" th:field="*{cargo}"  required>
+        <label for="num3">Equipped</label>
+        <input id="num3" type="number" th:field="*{equipped}"  required>
+        <label for="num4">IsGuard</label>
+        <select id="num4" th:field="*{isGuard}"  required>
             <option value="true">True</option>
             <option value="false">False</option>
         </select>
-        <label for="num3">Seats</label>
-        <input id="num3" type="number" th:field="*{seats}"  required>
-        <label for="num4">IsBaggage</label>
-        <select id="num4" th:field="*{isBaggage}"  required>
+        <label for="num5">IsHatch</label>
+        <select id="num5" th:field="*{isHatch}"  required>
             <option value="true">True</option>
             <option value="false">False</option>
         </select>
@@ -29,7 +31,7 @@
 </div>
 <hr>
 
-<a th:href="@{/ui/civil/get/all}">
+<a th:href="@{/ui/transport/get/all}">
     <button class="backBtn" style="padding: 0">Back</button>
 </a>
 </body>

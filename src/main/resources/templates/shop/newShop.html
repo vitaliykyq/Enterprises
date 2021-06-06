@@ -2,34 +2,45 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Civil</title>
+    <title>Add Shop</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
 <div class="segment">
-    <h1>ADD CIVIL</h1>
+    <h1>ADD SHOP</h1>
 </div>
 <div class="updateForm" style="margin-bottom: 150px">
-    <form action="#" th:action="@{/ui/civil/add}" th:object="${civil}"
+    <form action="#" th:action="@{/ui/shop/add}" th:object="${shop}"
           method="POST">
-        <label for="num2">IsBusiness</label>
-        <select id="num2" th:field="*{isBusiness}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
+        <label for="num2">PlotList</label>
+        <select multiple id="num2" th:field="*{plotList}">
+            <option th:value="${null}">Null</option>
+            <option th:each="plotListId: ${plotListId}"
+                    th:value="${plotListId.id}" th:text="${plotListId.number}">
+            </option>
         </select>
-        <label for="num3">Seats</label>
-        <input id="num3" type="number" th:field="*{seats}"  required>
-        <label for="num4">IsBaggage</label>
-        <select id="num4" th:field="*{isBaggage}"  required>
-            <option value="true">True</option>
-            <option value="false">False</option>
+        <label for="num3">Head</label>
+        <select id="num3" th:field="*{head}">
+            <option th:value="${null}">Null</option>
+            <option th:each="engineerListId: ${engineerListId}"
+                    th:value="${engineerListId.id}" th:text="${engineerListId.experience}">
+            </option>
         </select>
+        <label for="num4">LaboratoryList</label>
+        <select multiple id="num4" th:field="*{laboratoryList}">
+            <option th:value="${null}">Null</option>
+            <option th:each="laboratoryListId: ${laboratoryListId}"
+                    th:value="${laboratoryListId.id}" th:text="${laboratoryListId.address}">
+            </option>
+        </select>
+        <label for="num5">Area</label>
+        <input id="num5" th:field="*{area}">
         <button type="submit" class="newBtn" style="transition: 0.5s; padding: 0; font-size: 0.8em">SAVE</button>
     </form>
 </div>
 <hr>
 
-<a th:href="@{/ui/civil/get/all}">
+<a th:href="@{/ui/shop/get/all}">
     <button class="backBtn" style="padding: 0">Back</button>
 </a>
 </body>

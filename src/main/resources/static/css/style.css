@@ -212,3 +212,7 @@ button:active {
     height: 40px;
     color: #0cae00;
 }
+
+.menu tr td a {
+    color: #61677c;
+}

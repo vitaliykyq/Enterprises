@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="content" style="position: absolute; left: 50%; transform: translate(-50%, 0)">
+        <h1 class="menu-text">Menu</h1>
+        <table class="main__menu">
+            <tbody class="menu">
+            <tr>
+                <td>
+                    <a data-text="Requests"
+                       th:href = "@{/ui/menu/}"
+                       onclick="window.location.href = this.getAttribute('href')">
+                        Requests
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/accounting/get/all}">Accounting</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/brigade/get/all}">Brigade</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/civil/get/all}">Civil</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/engineer/get/all}">Engineer</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/equipment/get/all}">Equipment</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/glider/get/all}">Glider</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/hangGlider/get/all}">HangGlider</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/helicopter/get/all}">Helicopter</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/laboratory/get/all}">Laboratory</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/military/get/all}">Military</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/missile/get/all}">Missile</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/person/get/all}">Person</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/plane/get/all}">Plane</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/plot/get/all}">Plot</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/produce/get/all}">Produce</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/product/get/all}">Product</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/shop/get/all}">Shop</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/testing/get/all}">Testing</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/transport/get/all}">Transport</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/ui/worker/get/all}">Worker</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

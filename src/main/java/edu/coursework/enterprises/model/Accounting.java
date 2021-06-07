@@ -25,6 +25,9 @@ public class Accounting {
     private String id;
 
     private Product product;
+    private Glider glider;
+    private HangGlider hangGlider;
+    private Missile missile;
     private Laboratory laboratory;
 
     private Date createdAt;

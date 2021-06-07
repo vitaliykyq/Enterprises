@@ -216,3 +216,10 @@ button:active {
 .menu tr td a {
     color: #61677c;
 }
+
+.menuBtn {
+    display: block;
+    width: 150px;
+    height: 50px;
+    color: #00c256;
+}

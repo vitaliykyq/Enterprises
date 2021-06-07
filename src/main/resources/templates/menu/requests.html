@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="content" style="position: absolute; left: 50%; transform: translate(-50%, 0)">
+        <h1 class="menu-text">Menu</h1>
+        <table class="main__menu">
+            <tbody class="menu">
+
+            <tr>
+                <td>
+                    <a th:href="@{/api/plane/get/allByName/{name}}">QUERY 1: getAllPlanesByName</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/api/plane/get/allByModel/{model}}">QUERY 2: getAllPlanesByModel</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/api/plane/get/amountOfPlanesOfAllModels/{id}}">QUERY 3: getAmountOfPlanesOfEveryModel</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/api/plane/getamountOfPlanesOfModel/{model}}">QUERY 4: getAmountOfPlanesOfModel</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/api/helicopter/get/allByModel/{model}}">QUERY 5: getAllHelicoptersByModel</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/api/helicopter/get/allByName/{name}}">QUERY 6: getAllHelicoptersByName</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/api/helicopter/get/amountOfHelicoptersOfEveryModel}">QUERY 7: getAmountOfHelicoptersOfEveryModel</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/api/helicopter/get/amountOfHelicoptersOfModel/{model}}">QUERY 8: getAmountOfHelicoptersOfModel</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

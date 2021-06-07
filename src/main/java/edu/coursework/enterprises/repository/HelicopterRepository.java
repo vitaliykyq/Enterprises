@@ -12,6 +12,13 @@ import edu.coursework.enterprises.model.Helicopter;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface HelicopterRepository extends MongoRepository<Helicopter, String> {
+
+    public List<Helicopter> getAllByName (String name);
+    public List<Helicopter> getAllByModel (String model);
+
+
 }

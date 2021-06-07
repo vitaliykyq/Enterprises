@@ -51,4 +51,24 @@ public class HelicopterRestController {
         return service.update(helicopter);
     }
 
+    @GetMapping("/get/amountOfHelicoptersOfModel/{model}")
+    public Object getAmountOfHelicoptersOfModel(@PathVariable("model") String model){
+        return service.getAmountOfHelicoptersOfModel(model);
+    }
+
+    @GetMapping("/get/amountOfHelicoptersOfEveryModel")
+    public Object getAmountOfHelicoptersOfEveryModel(){
+        return service.getAmountOfHelicoptersOfEveryModel();
+    }
+
+    @GetMapping("/get/allByModel/{model}")
+    public Object getAllByModel(@PathVariable("model") String model){
+        return service.getAllByModel(model);
+    }
+
+    @GetMapping("/get/allByName/{name}")
+    public Object getAllByName(@PathVariable("name") String name){
+        return service.getAllByName(name);
+    }
+
 }

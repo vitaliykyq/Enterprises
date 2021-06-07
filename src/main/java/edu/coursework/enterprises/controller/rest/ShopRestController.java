@@ -41,6 +41,11 @@ public class ShopRestController {
         return service.delete(id);
     }
 
+    @GetMapping("/get/headOfShop/{id}")
+    public Object getHeadOfShop(@PathVariable("id") String id){
+        return service.getHeadOfShop(id);
+    }
+
     @PostMapping ("/create/")
     public Shop create(@RequestBody Shop shop){
         return service.create(shop);

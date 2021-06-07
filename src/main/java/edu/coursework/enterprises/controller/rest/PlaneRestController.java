@@ -51,4 +51,23 @@ public class PlaneRestController {
         return service.update(plane);
     }
 
+    @GetMapping("/get/allByName/{name}")
+    public Object getAllByName(@PathVariable("name") String name){
+        return service.getAllByName(name);
+    }
+
+    @GetMapping("/get/allByModel/{model}")
+    public Object getAllByModel(@PathVariable("model") String model){
+        return service.getAllByModel(model);
+    }
+
+    @GetMapping("/get/amountOfPlanesOfAllModels/{id}")
+    public Object getAmountOfPlanesOfEveryModel(){
+        return service.getAmountOfPlanesOfEveryModel();
+    }
+
+    @GetMapping("/get/amountOfPlanesOfModel/{model}")
+    public Object getAmountOfPlanesOfModel(@PathVariable("model") String model){
+        return service.getAmountOfPlanesOfModel(model);
+    }
 }

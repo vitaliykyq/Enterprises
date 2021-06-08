@@ -21,7 +21,7 @@
             <label for="num4">Civil</label>
             <div id="num4">
                 <label for="id1">Id</label>
-                <select id="id1" style="transition: 0.5s" th:field="*{civil.id}">
+                <select id="id1" style="transition: 0.5s" th:field="*{civil}">
                     <option th:each="civilListId: ${civilListId}"
                             th:value="${civilListId.id}" th:text="${civilListId.id}">
                     </option>
@@ -30,7 +30,7 @@
             <label for="num5">Civil</label>
             <div id="num5">
                 <label for="id2">Id</label>
-                <select id="id2" style="transition: 0.5s" th:field="*{military.id}">
+                <select id="id2" style="transition: 0.5s" th:field="*{military}">
                     <option th:each="militaryListId: ${militaryListId}"
                             th:value="${militaryListId.id}" th:text="${militaryListId.id}">
                     </option>
@@ -39,7 +39,7 @@
             <label for="num6">Civil</label>
             <div id="num6">
                 <label for="id3">Id</label>
-                <select id="id3" style="transition: 0.5s" th:field="*{transport.id}">
+                <select id="id3" style="transition: 0.5s" th:field="*{transport}">
                     <option th:each="transportListId: ${transportListId}"
                             th:value="${transportListId.id}" th:text="${transportListId.id}">
                     </option>

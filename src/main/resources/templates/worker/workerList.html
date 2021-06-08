@@ -21,7 +21,6 @@
             <tbody>
             <tr th:each="worker: ${workerList}">
                 <td th:text="${worker.id}"></td>
-                <td th:text="${worker.person}"></td>
                 <td>
                     <button class="btn btnDrop" th:text="${worker.person.firstName}"
                             th:data-id="${worker.person.id + worker.id}"

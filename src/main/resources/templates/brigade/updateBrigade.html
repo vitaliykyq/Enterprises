@@ -14,7 +14,7 @@
               method="POST">
             <label for="num1">Id</label>
             <input id="num1" readonly th:field="*{id}"/>
-            <label for="num3">Brigadier</label>brigadier
+            <label for="num3">Brigadier</label>
             <select id="num3" th:field="*{brigadier}">
                 <option th:value="${null}">Null</option>
                 <option th:each="workerListId: ${workerListId}"

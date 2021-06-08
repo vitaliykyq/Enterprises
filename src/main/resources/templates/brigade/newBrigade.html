@@ -12,7 +12,7 @@
 <div class="updateForm" style="margin-bottom: 150px">
     <form action="#" th:action="@{/ui/brigade/add}" th:object="${brigade}"
           method="POST">
-        <label for="num3">Brigadier</label>brigadier
+        <label for="num3">Brigadier</label>
         <select id="num3" th:field="*{brigadier}">
             <option th:value="${null}">Null</option>
             <option th:each="workerListId: ${workerListId}"

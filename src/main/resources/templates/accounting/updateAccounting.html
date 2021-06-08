@@ -21,8 +21,29 @@
                         th:value="${productListId.id}" th:text="${productListId.kind}">
                 </option>
             </select>
-            <label for="num3">Laboratory</label>
-            <select id="num3" th:field="*{laboratory}">
+            <label for="num3">Glider</label>
+            <select id="num3" th:field="*{glider}">
+                <option th:value="${null}">Null</option>
+                <option th:each="gliderListId: ${gliderListId}"
+                        th:value="${gliderListId.id}" th:text="${gliderListId.name}">
+                </option>
+            </select>
+            <label for="num4">HangGlider</label>
+            <select id="num4" th:field="*{hangGlider}">
+                <option th:value="${null}">Null</option>
+                <option th:each="hangGliderListId: ${hangGliderListId}"
+                        th:value="${hangGliderListId.id}" th:text="${hangGliderListId.name}">
+                </option>
+            </select>
+            <label for="num5">Missile</label>
+            <select id="num5" th:field="*{missile}">
+                <option th:value="${null}">Null</option>
+                <option th:each="missileListId: ${missileListId}"
+                        th:value="${missileListId.id}" th:text="${missileListId.name}">
+                </option>
+            </select>
+            <label for="num6">Laboratory</label>
+            <select id="num6" th:field="*{laboratory}">
                 <option th:value="${null}">Null</option>
                 <option th:each="laboratoryListId: ${laboratoryListId}"
                         th:value="${laboratoryListId.id}" th:text="${laboratoryListId.address}">

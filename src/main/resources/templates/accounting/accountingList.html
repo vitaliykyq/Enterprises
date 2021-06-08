@@ -12,6 +12,9 @@
                 <tr>
                     <th>Id</th>
                     <th>Product</th>
+                    <th>Glider</th>
+                    <th>HangGlider</th>
+                    <th>Missile</th>
                     <th>Laboratory</th>
                     <th>CreatedAt</th>
                     <th>ModifiedAt</th>
@@ -48,6 +51,96 @@
                         <p th:text="${accounting.product.createdAt}"></p>
                         <p>ModifiedAt</p>
                         <p th:text="${accounting.product.modifiedAt}"></p>
+                        <a class="btnDropItem" th:href="@{/ui/type/get/all}">
+                            <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btnDrop" th:text="${accounting.glider.name}"
+                            th:data-id="${accounting.glider.id + accounting.id}"
+                            th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
+                    <div class="dropItem" th:data-id-drop="${accounting.glider.id + accounting.id}" style="transition: 0.5s">
+                        <p>Name</p>
+                        <p th:text="${accounting.glider.name}"></p>
+                        <p>Model</p>
+                        <p th:text="${accounting.glider.model}"></p>
+                        <p>Issue</p>
+                        <p th:text="${accounting.glider.issue}"></p>
+                        <p>Aircrew</p>
+                        <p th:text="${accounting.glider.aircrew}"></p>
+                        <p>Height</p>
+                        <p th:text="${accounting.glider.height}"></p>
+                        <p>Length</p>
+                        <p th:text="${accounting.glider.length}"></p>
+                        <p>Ceiling</p>
+                        <p th:text="${accounting.glider.ceiling}"></p>
+                        <p>EngineType</p>
+                        <p th:text="${accounting.glider.engineType}"></p>
+                        <p>CreatedAt</p>
+                        <p th:text="${accounting.laboratory.createdAt}"></p>
+                        <p>ModifiedAt</p>
+                        <p th:text="${accounting.laboratory.modifiedAt}"></p>
+                        <a class="btnDropItem" th:href="@{/ui/type/get/all}">
+                            <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btnDrop" th:text="${accounting.hangGlider.name}"
+                            th:data-id="${accounting.hangGlider.id + accounting.id}"
+                            th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
+                    <div class="dropItem" th:data-id-drop="${accounting.hangGlider.id + accounting.id}" style="transition: 0.5s">
+                        <p>Name</p>
+                        <p th:text="${accounting.hangGlider.name}"></p>
+                        <p>Model</p>
+                        <p th:text="${accounting.hangGlider.model}"></p>
+                        <p>Issue</p>
+                        <p th:text="${accounting.hangGlider.issue}"></p>
+                        <p>Aircrew</p>
+                        <p th:text="${accounting.hangGlider.aircrew}"></p>
+                        <p>Height</p>
+                        <p th:text="${accounting.hangGlider.height}"></p>
+                        <p>Length</p>
+                        <p th:text="${accounting.hangGlider.length}"></p>
+                        <p>Ceiling</p>
+                        <p th:text="${accounting.hangGlider.ceiling}"></p>
+                        <p>EngineType</p>
+                        <p th:text="${accounting.hangGlider.engineType}"></p>
+                        <p>Rating</p>
+                        <p th:text="${accounting.hangGlider.rating}"></p>
+                        <p>CreatedAt</p>
+                        <p th:text="${accounting.hangGlider.createdAt}"></p>
+                        <p>ModifiedAt</p>
+                        <p th:text="${accounting.hangGlider.modifiedAt}"></p>
+                        <a class="btnDropItem" th:href="@{/ui/type/get/all}">
+                            <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btnDrop" th:text="${accounting.missile.name}"
+                            th:data-id="${accounting.missile.id + accounting.id}"
+                            th:data-status="off" onclick="kl(this)" style="transition: 0.5s;  padding: 0"></button>
+                    <div class="dropItem" th:data-id-drop="${accounting.missile.id + accounting.id}" style="transition: 0.5s">
+                        <p>Name</p>
+                        <p th:text="${accounting.missile.name}"></p>
+                        <p>Model</p>
+                        <p th:text="${accounting.missile.model}"></p>
+                        <p>Type</p>
+                        <p th:text="${accounting.missile.type}"></p>
+                        <p>Issue</p>
+                        <p th:text="${accounting.missile.issue}"></p>
+                        <p>Aircrew</p>
+                        <p th:text="${accounting.missile.classOfMissile}"></p>
+                        <p>Height</p>
+                        <p th:text="${accounting.missile.missileStuffing}"></p>
+                        <p>Length</p>
+                        <p th:text="${accounting.missile.chargePower}"></p>
+                        <p>CreatedAt</p>
+                        <p th:text="${accounting.missile.createdAt}"></p>
+                        <p>ModifiedAt</p>
+                        <p th:text="${accounting.missile.modifiedAt}"></p>
                         <a class="btnDropItem" th:href="@{/ui/type/get/all}">
                             <button class="btn updateBtn" style="transition: 0.5s;  padding: 0">Open</button>
                         </a>

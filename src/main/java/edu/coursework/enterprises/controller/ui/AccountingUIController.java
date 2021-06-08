@@ -8,11 +8,12 @@ package edu.coursework.enterprises.controller.ui;
     @since:    26.04.2021     
 */
 
-import edu.coursework.enterprises.model.Accounting;
-import edu.coursework.enterprises.model.Laboratory;
-import edu.coursework.enterprises.model.Product;
+import edu.coursework.enterprises.model.*;
 import edu.coursework.enterprises.service.accounting.impls.AccountingServiceImpl;
+import edu.coursework.enterprises.service.glider.impls.GliderServiceImpl;
+import edu.coursework.enterprises.service.hangGlider.impls.HangGliderServiceImpl;
 import edu.coursework.enterprises.service.laboratory.impls.LaboratoryServiceImpl;
+import edu.coursework.enterprises.service.missile.impls.MissileServiceImpl;
 import edu.coursework.enterprises.service.product.impls.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,15 @@ public class AccountingUIController {
 
     @Autowired
     ProductServiceImpl productService;
+
+    @Autowired
+    GliderServiceImpl gliderService;
+
+    @Autowired
+    HangGliderServiceImpl hangGliderService;
+
+    @Autowired
+    MissileServiceImpl missileService;
 
     @Autowired
     LaboratoryServiceImpl laboratoryService;
@@ -51,6 +61,15 @@ public class AccountingUIController {
         List<Product> productListId = productService.getAll();
         model.addAttribute("productListId", productListId);
 
+        List<Glider> gliderListId = gliderService.getAll();
+        model.addAttribute("gliderListId", gliderListId);
+
+        List<HangGlider> hangGliderListId = hangGliderService.getAll();
+        model.addAttribute("hangGliderListId", hangGliderListId);
+
+        List<Missile> missileListId = missileService.getAll();
+        model.addAttribute("missileListId", missileListId);
+
         List<Laboratory> laboratoryListId = laboratoryService.getAll();
         model.addAttribute("laboratoryListId", laboratoryListId);
         return "accounting/updateAccounting";
@@ -63,6 +82,15 @@ public class AccountingUIController {
 
         List<Product> productListId = productService.getAll();
         model.addAttribute("productListId", productListId);
+
+        List<Glider> gliderListId = gliderService.getAll();
+        model.addAttribute("gliderListId", gliderListId);
+
+        List<HangGlider> hangGliderListId = hangGliderService.getAll();
+        model.addAttribute("hangGliderListId", hangGliderListId);
+
+        List<Missile> missileListId = missileService.getAll();
+        model.addAttribute("missileListId", missileListId);
 
         List<Laboratory> laboratoryListId = laboratoryService.getAll();
         model.addAttribute("laboratoryListId", laboratoryListId);
